@@ -1,0 +1,88 @@
+# Desi Desktop — Decision log
+
+Append new decisions at the bottom. Never edit or delete past entries; if a decision changes, add a new entry that supersedes the old one by ID.
+
+Format for new entries:
+
+```
+## D<number> — <short title> (<YYYY-MM-DD>)
+- Context: what forced the decision
+- Decision: what was chosen
+- Alternatives: what was rejected
+- Reason: why
+- Decided by: Owner | Architect | Claude Code
+- Supersedes: D<number> (if any)
+```
+
+---
+
+## Baseline decisions (2026-11-23, from docs/SPEC.md section 1)
+
+Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, TypeScript + Vite, pilot gate), Spec C (v1.2 engine: rights lifecycle, hardened networking).
+
+| ID | Topic | Decision | Decided by | Reason |
+|---|---|---|---|---|
+| D1 | Audience | All US Desis (Indian, Pakistani, Bangladeshi, Nepali, Sri Lankan), national content only; no city edition in v1 | Owner | Widest useful audience; no weekly local curation |
+| D2 | Content rights | Hybrid: official/open sources live at launch; publisher feeds enabled one by one after recorded owner review; Spec C rights lifecycle | Owner | Real content at launch without legal risk |
+| D3 | Refresh | Engine wakes every 30 min; each source has its own minimum interval | Owner + Architect | Fresh where sources allow; polite to slow sources |
+| D4 | Repo | Public GitHub repo; no collected publisher content ever committed | Owner (via D3) | 30-min runs exceed private free Actions minutes |
+| D5 | Frontend | Vanilla TypeScript + Vite; no framework | Architect | Shared types with engine; small, fast bundle |
+| D6 | Validation | Zod in engine (source of truth); small hand-written guards in browser | Architect | One contract source; browser JS stays under budget |
+| D7 | Hosting | Cloudflare Workers Static Assets, assets-only site Worker | Architect | Unlimited free static requests; no Pages build quota |
+| D8 | Stalled scheduler | Separate cron-only watchdog Worker checks GitHub API hourly; re-enables and dispatches refresh workflow if disabled or silent > 2 h | Architect | Closes the gap Specs B and C left to the owner |
+| D9 | Keepalive | No fake heartbeat commits; watchdog re-enables workflows instead | Architect | Same effect, clean history |
+| D10 | Default tiles | 9 tiles (3×3), all with honest day-one content: Shortcuts, India News, US News, Cricket, Visa & Immigration, Currency, South Asia News, Family Time & Weather, Festivals & Holidays | Architect | Full grid, nothing empty or fake |
+| D11 | Rows per tile | Collect up to 20; show 5; Show more to 10 | Specs B + C | Calm by default; filter still finds older rows |
+| D12 | Grid | 3 / 2 / 1 columns responsive; optional 4 columns at ≥ 1280 px | Architect | Owner's original 4×N request, calm default |
+| D13 | Filter scope | AND of all words within one heading or one row title; non-matching rows hidden | Specs B + C | Predictable; no cross-field matches |
+| D14 | Setup code (cross-device copy) | Deferred to Later | Architect | Not needed to launch |
+| D15 | PWA | Manifest + icons at launch; offline service worker v1.1 | Architect | Home-screen install now; avoid cache bugs at launch |
+| D16 | Freshness | Stale after 3× source interval; reuse last good max 48 h; drop headlines older than 7 days or license limit | Architect | Honest at any refresh rate |
+| D17 | Network safety | Spec B + C controls (HTTPS, exact-host allowlist, redirect checks, private-IP block, size/time caps, no DTD) without DNS pinning | Architect | Allowlisted hosts on short-lived CI runners cover the risk |
+| D18 | Deploy cadence | Deploy only when visible content changes, plus one daily heartbeat | Spec C | Saves deploys; truthful health timestamps |
+| D19 | Alerts | GitHub Issues per failing source (auto-close) + workflow failure emails | Architect | Tracking plus crash coverage |
+| D20 | Dependency updates | Dependabot weekly; auto-merge dev-only patches after green CI; runtime and Actions updates need owner; Actions pinned by SHA | Architect | Safety without monthly toil |
+| D21 | Cricket | Curated fixtures + official links at launch; CricketData adapter built but disabled until rights confirmed | Spec B | Honest now, live later |
+| D22 | Weather | Engine fetches NWS for 20 fixed Desi metro areas; user picks one; no per-visitor calls | Spec C | National coverage, no visitor-driven API calls |
+
+---
+
+## Decisions made during build
+
+<!-- Claude Code: add new entries below using the format at the top of this file. -->
+
+## D23 — Node version (2026-11-23)
+- Context: Spec 4.3 says to pin the active Node LTS; the dev machine had Node 22.19 (maintenance LTS).
+- Decision: Pin Node 24 LTS in .nvmrc and CI; owner installs Node 24 locally.
+- Alternatives: Pin Node 22 to match the machine.
+- Reason: Matches the spec; 24 is the active LTS in Nov 2026.
+- Decided by: Owner
+
+## D24 — Pre-approved runtime dependencies (2026-11-23)
+- Context: CLAUDE.md requires owner approval for each runtime dependency.
+- Decision: zod and fast-xml-parser (engine) and adhan (browser) are approved because the spec names them. Any other runtime dependency still needs the owner. Dev-only tooling does not need approval.
+- Alternatives: Ask separately for each dependency.
+- Reason: Already part of the agreed spec.
+- Decided by: Owner
+
+## D25 — Curated content authorship (2026-11-23)
+- Context: M2 needs cricket fixtures, festivals and consulate links; wrong dates break the Honest principle.
+- Decision: Claude Code drafts curated content from official sources, cites a source for each entry and marks the files unverified; the owner verifies before the first staging deploy.
+- Alternatives: Owner writes all curated content.
+- Reason: Faster start, with a human check before anything is public.
+- Decided by: Owner
+
+## D26 — Repository and PR flow (2026-11-23)
+- Context: The project folder had no git repo, and the GitHub CLI was not installed.
+- Decision: The owner creates the public GitHub repo `desi-desktop` and installs and logs in to `gh`; Claude Code then pushes milestone branches and opens PRs.
+- Alternatives: Local git only until later; Claude Code creates the repo through gh.
+- Reason: Creating account resources is the owner's job (CLAUDE.md).
+- Decided by: Owner
+
+## D27 — Node version correction (2026-11-23)
+- Context: D23 pinned Node 24 on the belief it was the active LTS. In Nov 2026 the active LTS is Node 26 (winget OpenJS.NodeJS.LTS = 26.13.1); Node 24 is in maintenance.
+- Decision: Pin Node 26 LTS (26.13.1 at setup) in .nvmrc and CI. Installed on the dev machine, replacing Node 22.
+- Alternatives: Keep Node 24 per D23.
+- Reason: Spec 4.3 asks for the active LTS; owner installed Node 26.
+- Decided by: Owner
+- Supersedes: D23

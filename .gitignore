@@ -1,0 +1,24 @@
+# Dependencies and build output
+node_modules/
+dist/
+tmp/
+coverage/
+playwright-report/
+test-results/
+blob-report/
+.wrangler/
+.vite/
+
+# Secrets and local settings — never commit
+.env
+.env.*
+.dev.vars
+.claude/settings.local.json
+
+# Collected publisher content is never committed (CLAUDE.md)
+data/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.log
