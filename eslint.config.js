@@ -22,7 +22,21 @@ export default defineConfig(
     files: ['app/**/*.ts'],
     languageOptions: { globals: globals.browser },
     rules: {
-      'no-restricted-imports': importBan(['engine'], 'App code never imports from engine/ (CLAUDE.md). Use shared/.'),
+      // CLAUDE.md: no engine imports. D6: shared/contracts.ts (which loads Zod) only via `import type`.
+      '@typescript-eslint/no-restricted-imports': [
+        'error',
+        {
+          paths: [{ name: 'zod', message: 'No Zod in the browser (D6). Use guards.ts.' }],
+          patterns: [
+            { group: ['**/engine', '**/engine/**'], message: 'App code never imports from engine/ (CLAUDE.md). Use shared/.' },
+            {
+              group: ['**/shared/contracts*'],
+              allowTypeImports: true,
+              message: 'Import shared/contracts.ts with `import type` only (D6: keeps Zod out of the bundle).',
+            },
+          ],
+        },
+      ],
       'no-restricted-properties': [
         'error',
         ...htmlSinks,

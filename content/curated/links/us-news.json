@@ -1,0 +1,27 @@
+{
+  "tile": "us-news",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". apnews.com returns 403 to automated checks."
+  },
+  "links": [
+    {
+      "title": "Federal Register",
+      "url": "https://www.federalregister.gov/"
+    },
+    {
+      "title": "USA.gov",
+      "url": "https://www.usa.gov/"
+    },
+    {
+      "title": "NPR",
+      "url": "https://www.npr.org/"
+    },
+    {
+      "title": "AP News",
+      "url": "https://apnews.com/"
+    }
+  ]
+}

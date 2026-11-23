@@ -1,0 +1,27 @@
+{
+  "tile": "movies",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". zee5.com returns 403 to automated checks. SonyLIV left out: it did not respond."
+  },
+  "links": [
+    {
+      "title": "Netflix",
+      "url": "https://www.netflix.com/"
+    },
+    {
+      "title": "Prime Video",
+      "url": "https://www.primevideo.com/"
+    },
+    {
+      "title": "JioHotstar",
+      "url": "https://www.hotstar.com/"
+    },
+    {
+      "title": "ZEE5",
+      "url": "https://www.zee5.com/"
+    }
+  ]
+}

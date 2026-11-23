@@ -1,0 +1,27 @@
+{
+  "tile": "currency",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". Provider links only; no rate comparison (spec 2.3)."
+  },
+  "links": [
+    {
+      "title": "Remitly",
+      "url": "https://www.remitly.com/"
+    },
+    {
+      "title": "Wise",
+      "url": "https://wise.com/"
+    },
+    {
+      "title": "Western Union",
+      "url": "https://www.westernunion.com/"
+    },
+    {
+      "title": "Xoom (PayPal)",
+      "url": "https://www.xoom.com/"
+    }
+  ]
+}

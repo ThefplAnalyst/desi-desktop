@@ -1,0 +1,219 @@
+{
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23 from general knowledge, NOT from an official calendar. Items marked estimated:true follow lunar or regional calendars and must be checked against an official source before verifying. US federal holiday dates follow the OPM rules (fixed date or Nth weekday)."
+  },
+  "items": [
+    {
+      "id": "christmas-2026",
+      "title": "Christmas Day",
+      "date": "2026-12-25",
+      "url": "https://en.wikipedia.org/wiki/Christmas",
+      "countries": [
+        "US"
+      ],
+      "estimated": false,
+      "source": "US federal holiday (OPM)"
+    },
+    {
+      "id": "new-year-2027",
+      "title": "New Year's Day",
+      "date": "2027-01-01",
+      "url": "https://en.wikipedia.org/wiki/New_Year%27s_Day",
+      "countries": [
+        "US"
+      ],
+      "estimated": false,
+      "source": "US federal holiday (OPM)"
+    },
+    {
+      "id": "lohri-2027",
+      "title": "Lohri",
+      "date": "2027-01-13",
+      "url": "https://en.wikipedia.org/wiki/Lohri",
+      "countries": [
+        "IN"
+      ],
+      "estimated": true,
+      "source": "Usually 13 January; check an Indian holiday calendar"
+    },
+    {
+      "id": "sankranti-pongal-2027",
+      "title": "Makar Sankranti and Pongal",
+      "date": "2027-01-14",
+      "url": "https://en.wikipedia.org/wiki/Makar_Sankranti",
+      "countries": [
+        "IN",
+        "NP",
+        "LK"
+      ],
+      "estimated": true,
+      "source": "14 or 15 January; check an Indian holiday calendar"
+    },
+    {
+      "id": "mlk-day-2027",
+      "title": "Martin Luther King Jr. Day",
+      "date": "2027-01-18",
+      "url": "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr._Day",
+      "countries": [
+        "US"
+      ],
+      "estimated": false,
+      "source": "US federal holiday: third Monday of January (OPM)"
+    },
+    {
+      "id": "republic-day-2027",
+      "title": "Republic Day (India)",
+      "date": "2027-01-26",
+      "url": "https://en.wikipedia.org/wiki/Republic_Day_(India)",
+      "countries": [
+        "IN"
+      ],
+      "estimated": false,
+      "source": "Fixed national holiday, 26 January"
+    },
+    {
+      "id": "sri-lanka-independence-2027",
+      "title": "Independence Day (Sri Lanka)",
+      "date": "2027-02-04",
+      "url": "https://en.wikipedia.org/wiki/Independence_Day_(Sri_Lanka)",
+      "countries": [
+        "LK"
+      ],
+      "estimated": false,
+      "source": "Fixed national holiday, 4 February"
+    },
+    {
+      "id": "ramadan-begins-2027",
+      "title": "Ramadan begins",
+      "date": "2027-02-08",
+      "url": "https://en.wikipedia.org/wiki/Ramadan",
+      "countries": [
+        "PK",
+        "BD",
+        "IN",
+        "US"
+      ],
+      "estimated": true,
+      "source": "Depends on moon sighting; check a local mosque or Islamic calendar"
+    },
+    {
+      "id": "presidents-day-2027",
+      "title": "Presidents' Day (Washington's Birthday)",
+      "date": "2027-02-15",
+      "url": "https://en.wikipedia.org/wiki/Washington%27s_Birthday",
+      "countries": [
+        "US"
+      ],
+      "estimated": false,
+      "source": "US federal holiday: third Monday of February (OPM)"
+    },
+    {
+      "id": "shaheed-dibosh-2027",
+      "title": "Language Martyrs' Day (Shaheed Dibosh)",
+      "date": "2027-02-21",
+      "url": "https://en.wikipedia.org/wiki/International_Mother_Language_Day",
+      "countries": [
+        "BD"
+      ],
+      "estimated": false,
+      "source": "Fixed national day, 21 February"
+    },
+    {
+      "id": "eid-al-fitr-2027",
+      "title": "Eid al-Fitr",
+      "date": "2027-03-10",
+      "url": "https://en.wikipedia.org/wiki/Eid_al-Fitr",
+      "countries": [
+        "PK",
+        "BD",
+        "IN",
+        "NP",
+        "LK",
+        "US"
+      ],
+      "estimated": true,
+      "source": "Depends on moon sighting; check a local mosque or Islamic calendar"
+    },
+    {
+      "id": "holi-2027",
+      "title": "Holi",
+      "date": "2027-03-22",
+      "url": "https://en.wikipedia.org/wiki/Holi",
+      "countries": [
+        "IN",
+        "NP"
+      ],
+      "estimated": true,
+      "source": "Phalguna Purnima; check an Indian holiday calendar"
+    },
+    {
+      "id": "pakistan-day-2027",
+      "title": "Pakistan Day",
+      "date": "2027-03-23",
+      "url": "https://en.wikipedia.org/wiki/Pakistan_Day",
+      "countries": [
+        "PK"
+      ],
+      "estimated": false,
+      "source": "Fixed national holiday, 23 March"
+    },
+    {
+      "id": "bangladesh-independence-2027",
+      "title": "Independence Day (Bangladesh)",
+      "date": "2027-03-26",
+      "url": "https://en.wikipedia.org/wiki/Independence_Day_(Bangladesh)",
+      "countries": [
+        "BD"
+      ],
+      "estimated": false,
+      "source": "Fixed national holiday, 26 March"
+    },
+    {
+      "id": "vaisakhi-2027",
+      "title": "Vaisakhi",
+      "date": "2027-04-14",
+      "url": "https://en.wikipedia.org/wiki/Vaisakhi",
+      "countries": [
+        "IN"
+      ],
+      "estimated": true,
+      "source": "13 or 14 April; check an Indian holiday calendar"
+    },
+    {
+      "id": "pohela-boishakh-2027",
+      "title": "Pohela Boishakh (Bengali New Year)",
+      "date": "2027-04-14",
+      "url": "https://en.wikipedia.org/wiki/Pohela_Boishakh",
+      "countries": [
+        "BD"
+      ],
+      "estimated": false,
+      "source": "Fixed at 14 April in Bangladesh"
+    },
+    {
+      "id": "sinhala-tamil-new-year-2027",
+      "title": "Sinhala and Tamil New Year",
+      "date": "2027-04-14",
+      "url": "https://en.wikipedia.org/wiki/Sinhalese_New_Year",
+      "countries": [
+        "LK"
+      ],
+      "estimated": true,
+      "source": "13 or 14 April; check the Sri Lanka government calendar"
+    },
+    {
+      "id": "nepali-new-year-2027",
+      "title": "Nepali New Year",
+      "date": "2027-04-14",
+      "url": "https://en.wikipedia.org/wiki/Nepali_New_Year",
+      "countries": [
+        "NP"
+      ],
+      "estimated": true,
+      "source": "Baisakh 1 (mid-April); check the Nepal government calendar"
+    }
+  ]
+}

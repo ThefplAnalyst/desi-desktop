@@ -139,3 +139,20 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Build into the project root (clutters the repo); only `npm run dev`.
 - Reason: Lets the owner test in their own browser with no extra setup; production output is unchanged.
 - Decided by: Claude Code
+
+## D33 — M2 engine choices (2026-11-23)
+- Context: Details the spec leaves open while building the engine core.
+- Decision:
+  - Registry (`config/sources.json`) holds the 8 launch sources, all `enabled: false`, `rights.status: "draft"`; the owner records each review. PIB and Frankfurter endpoints are `null` until verified in M3. Publisher feeds pending review are added in M3, once their endpoints are verified.
+  - Link directories live in `content/curated/consulates.json` and `content/curated/links/<tile>.json`. They are hand-picked links, not publisher content, so tiles show them whatever a source's rights status (spec: "until then its tile shows honest Useful links"). Each URL was checked once on 2026-11-23; sites that block bots (403) are noted in the file.
+  - Every curated file has `review.status`; the curated adapter refuses "unverified" files (health error `curated-unverified`). `--preview-curated` (used by `npm run content:dry-run`) lets a dev preview include unapproved curated sources and unverified files; such bundles carry `meta.preview: true` and M4 deploys will refuse them.
+  - `festivals.json` is drafted from general knowledge; lunar or regional dates are flagged `estimated` and shown as "(expected)". `cricket-fixtures.json` is empty until the owner adds fixtures from official schedules.
+  - Cross-source dedupe keeps the first row in registry order (the Item contract carries one `sourceId`).
+  - Tiles whose rows have `startsAt` (fixtures, festivals) sort soonest first and are not interleaved; news tiles sort newest first and alternate sources.
+  - A tile is "stale" when any source contributing rows has no success for 3× its interval (from timestamps, D16), "partial" when a publishable source is failing, else "fresh".
+  - `india-news` / `us-news` use the catalog's `officialTitle` ("India Updates" / "US Updates") while every publishable source of the tile is official.
+  - T-11 cases that need an XML parser (malformed/truncated XML, DTDs, external entities) are built with the RSS/Atom adapters in M3.
+  - Zod 4 schemas live in `shared/contracts.ts` with compile-time proofs that they match the spec 6.2 interfaces; ESLint allows only `import type` from it in app/.
+  - `npm run build:local:engine` previews the engine's own bundle on the owner's local server.
+- Reason: Honest by default (nothing publishes without owner approval and verification), simple, and fully testable offline.
+- Decided by: Claude Code

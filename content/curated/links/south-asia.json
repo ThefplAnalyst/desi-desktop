@@ -1,0 +1,35 @@
+{
+  "tile": "south-asia",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\"."
+  },
+  "links": [
+    {
+      "title": "Dawn (Pakistan)",
+      "url": "https://www.dawn.com/"
+    },
+    {
+      "title": "The Express Tribune (Pakistan)",
+      "url": "https://tribune.com.pk/"
+    },
+    {
+      "title": "The Daily Star (Bangladesh)",
+      "url": "https://www.thedailystar.net/"
+    },
+    {
+      "title": "Prothom Alo English (Bangladesh)",
+      "url": "https://en.prothomalo.com/"
+    },
+    {
+      "title": "The Kathmandu Post (Nepal)",
+      "url": "https://kathmandupost.com/"
+    },
+    {
+      "title": "Daily Mirror (Sri Lanka)",
+      "url": "https://www.dailymirror.lk/"
+    }
+  ]
+}
