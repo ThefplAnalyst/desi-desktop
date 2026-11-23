@@ -1,0 +1,43 @@
+{
+  "tile": "visa",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". travel.state.gov and egov.uscis.gov return 403 to automated checks (bot blocking) but are the official sites."
+  },
+  "links": [
+    {
+      "title": "Visa Bulletin (State Department)",
+      "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+    },
+    {
+      "title": "USCIS case status",
+      "url": "https://egov.uscis.gov/"
+    },
+    {
+      "title": "USCIS processing times",
+      "url": "https://egov.uscis.gov/processing-times/"
+    },
+    {
+      "title": "Embassy of India, Washington DC",
+      "url": "https://www.indianembassyusa.gov.in/"
+    },
+    {
+      "title": "Embassy of Pakistan, Washington DC",
+      "url": "https://www.embassyofpakistanusa.org/"
+    },
+    {
+      "title": "Embassy of Bangladesh, Washington DC",
+      "url": "https://www.bdembassyusa.org/"
+    },
+    {
+      "title": "Embassy of Nepal, Washington DC",
+      "url": "https://us.nepalembassy.gov.np/"
+    },
+    {
+      "title": "Embassy of Sri Lanka, Washington DC",
+      "url": "https://slembassyusa.org/"
+    }
+  ]
+}

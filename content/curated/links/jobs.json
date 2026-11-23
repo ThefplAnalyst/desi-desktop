@@ -1,0 +1,27 @@
+{
+  "tile": "jobs",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\"."
+  },
+  "links": [
+    {
+      "title": "USAJOBS",
+      "url": "https://www.usajobs.gov/"
+    },
+    {
+      "title": "USCIS: working in the United States",
+      "url": "https://www.uscis.gov/working-in-the-united-states"
+    },
+    {
+      "title": "Foreign labor certification (Department of Labor)",
+      "url": "https://flag.dol.gov/"
+    },
+    {
+      "title": "LinkedIn Jobs",
+      "url": "https://www.linkedin.com/jobs/"
+    }
+  ]
+}

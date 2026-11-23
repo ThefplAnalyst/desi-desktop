@@ -1,0 +1,35 @@
+{
+  "tile": "cricket",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". pcb.com.pk returns 403 to automated checks. Cricket Association of Nepal left out: its address could not be confirmed."
+  },
+  "links": [
+    {
+      "title": "ICC",
+      "url": "https://www.icc-cricket.com/"
+    },
+    {
+      "title": "BCCI (India)",
+      "url": "https://www.bcci.tv/"
+    },
+    {
+      "title": "Pakistan Cricket Board",
+      "url": "https://www.pcb.com.pk/"
+    },
+    {
+      "title": "Bangladesh Cricket Board",
+      "url": "https://www.tigercricket.com.bd/"
+    },
+    {
+      "title": "Sri Lanka Cricket",
+      "url": "https://www.srilankacricket.lk/"
+    },
+    {
+      "title": "USA Cricket",
+      "url": "https://www.usacricket.org/"
+    }
+  ]
+}

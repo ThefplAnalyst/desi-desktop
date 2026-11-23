@@ -1,0 +1,9 @@
+{
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Empty on purpose: Claude Code does not know upcoming fixtures reliably. Owner: add India, Pakistan, Bangladesh, Sri Lanka, Nepal and USA fixtures from the official boards' schedules (startsAt/endsAt in UTC, url = official match centre), then set status \"verified\". Until then the Cricket tile shows the official links in links/cricket.json."
+  },
+  "fixtures": []
+}

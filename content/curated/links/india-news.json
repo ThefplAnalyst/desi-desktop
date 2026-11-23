@@ -1,0 +1,31 @@
+{
+  "tile": "india-news",
+  "review": {
+    "status": "unverified",
+    "verifiedBy": null,
+    "verifiedAt": null,
+    "notes": "Drafted by Claude Code on 2026-11-23. Every URL was checked once: 200, unless noted. Owner: open each link, then set status \"verified\". ndtv.com returns 403 to automated checks."
+  },
+  "links": [
+    {
+      "title": "PIB press releases",
+      "url": "https://www.pib.gov.in/"
+    },
+    {
+      "title": "The Hindu",
+      "url": "https://www.thehindu.com/"
+    },
+    {
+      "title": "The Indian Express",
+      "url": "https://indianexpress.com/"
+    },
+    {
+      "title": "The Times of India",
+      "url": "https://timesofindia.indiatimes.com/"
+    },
+    {
+      "title": "NDTV",
+      "url": "https://www.ndtv.com/"
+    }
+  ]
+}

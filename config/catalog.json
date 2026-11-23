@@ -2,8 +2,8 @@
   "version": 1,
   "tiles": [
     { "id": "shortcuts", "title": "My Shortcuts", "mode": "local", "defaultOn": true, "icon": "star" },
-    { "id": "india-news", "title": "India News", "mode": "live", "defaultOn": true, "icon": "news" },
-    { "id": "us-news", "title": "US News", "mode": "live", "defaultOn": true, "icon": "building" },
+    { "id": "india-news", "title": "India News", "officialTitle": "India Updates", "mode": "live", "defaultOn": true, "icon": "news" },
+    { "id": "us-news", "title": "US News", "officialTitle": "US Updates", "mode": "live", "defaultOn": true, "icon": "building" },
     { "id": "cricket", "title": "Cricket", "mode": "curated", "defaultOn": true, "icon": "cricket" },
     { "id": "visa", "title": "Visa & Immigration", "mode": "live", "defaultOn": true, "icon": "passport" },
     { "id": "currency", "title": "Currency", "mode": "live", "defaultOn": true, "icon": "currency" },
