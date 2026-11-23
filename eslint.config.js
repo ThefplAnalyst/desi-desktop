@@ -15,7 +15,7 @@ const htmlSinks = ['innerHTML', 'outerHTML', 'insertAdjacentHTML'].map((property
 }));
 
 export default defineConfig(
-  { ignores: ['dist/', 'tmp/', 'coverage/', 'playwright-report/', 'test-results/', 'node_modules/'] },
+  { ignores: ['dist/', 'local/', 'tmp/', 'coverage/', 'playwright-report/', 'test-results/', 'node_modules/'] },
   js.configs.recommended,
   tseslint.configs.strict,
   {

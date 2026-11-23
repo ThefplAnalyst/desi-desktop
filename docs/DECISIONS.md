@@ -132,3 +132,10 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Retry until green (hides a real failure); drop Firefox axe entirely.
 - Reason: Keep CI honest and green without losing coverage of the page itself.
 - Decided by: Claude Code
+
+## D32 — Local preview on the owner's web server (2026-11-23)
+- Context: The owner tests on a local Python web server whose document root contains this project, at http://localhost:8000/desidesktop/.
+- Decision: `npm run build:local` builds into git-ignored `local/` with Vite base `/desidesktop/local/` and copies the development-only sample data (timestamps shifted to look 25 minutes old) into `local/data/`. Internal links are relative and data fetches use `import.meta.env.BASE_URL`, so one codebase works at the site root (production) and under a subfolder. The 404 page keeps absolute links because the host serves it at any depth.
+- Alternatives: Build into the project root (clutters the repo); only `npm run dev`.
+- Reason: Lets the owner test in their own browser with no extra setup; production output is unchanged.
+- Decided by: Claude Code

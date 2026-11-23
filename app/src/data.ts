@@ -9,6 +9,8 @@ export interface SiteData {
 }
 
 const MAX_BYTES = 512 * 1024;
+// "/" in production; "/desidesktop/local/" for the local preview build (npm run build:local).
+const BASE = import.meta.env.BASE_URL;
 
 async function getJson(url: string, fetchFn: typeof fetch): Promise<unknown> {
   const res = await fetchFn(url, { credentials: 'omit' });
@@ -20,9 +22,9 @@ async function getJson(url: string, fetchFn: typeof fetch): Promise<unknown> {
 
 export async function loadData(fetchFn: typeof fetch = fetch): Promise<SiteData> {
   const [content, health, sources] = await Promise.allSettled([
-    getJson('/data/content.json', fetchFn),
-    getJson('/data/health.json', fetchFn),
-    getJson('/data/sources.json', fetchFn),
+    getJson(`${BASE}data/content.json`, fetchFn),
+    getJson(`${BASE}data/health.json`, fetchFn),
+    getJson(`${BASE}data/sources.json`, fetchFn),
   ]);
   return {
     bundle: content.status === 'fulfilled' ? parseBundle(content.value) : null,

@@ -14,7 +14,8 @@
     "lint": "eslint .",
     "test": "vitest run",
     "check": "npm run typecheck && npm run lint && npm run test",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "build:local": "vite build --base /desidesktop/local/ --outDir ../local && node scripts/local-data.ts local"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
