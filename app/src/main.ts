@@ -49,6 +49,7 @@ function render(): void {
   $('today').textContent = todayText(today);
 
   grid.classList.toggle('cols-4', prefs.columns === 4);
+  grid.parentElement?.classList.toggle('wide', prefs.columns === 4);
   tip.hidden = prefs.tipDismissed;
   sessionNote.hidden = !saveFailed;
 

@@ -272,7 +272,7 @@ main {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
-  main:has(.grid.cols-4) {
+  main.wide {
     max-width: 1440px;
   }
 }
