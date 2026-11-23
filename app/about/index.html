@@ -4,13 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>About &amp; Sources · Desi Desktop</title>
+    <meta name="description" content="What Desi Desktop is and where every tile's content comes from." />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/src/styles/app.css" />
   </head>
   <body>
-    <main id="main">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="/">Desi Desktop</a>
+        <nav class="topbar-nav" aria-label="Site"><a class="topbar-button" href="/help/">Help</a></nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
       <h1>About &amp; Sources</h1>
-      <p class="muted">The source list is generated from the registry in M1–M2.</p>
-      <p><a href="/">Back to Desi Desktop</a></p>
+      <p>Desi Desktop is a free, fast start page for Indian, Pakistani, Bangladeshi, Nepali and Sri Lankan people living in the US. It has no ads, no accounts and no tracking.</p>
+
+      <h2 id="honest">How we keep it honest</h2>
+      <ul>
+        <li>We only show headlines from sources we have the right to show. Until a publisher's terms are reviewed, its tile shows “Useful links — not a live feed”.</li>
+        <li>Content refreshes on a schedule, so each tile says when its source last updated. Nothing is called “live”.</li>
+        <li>We never write, rewrite or summarize headlines with AI, and we never copy article text or images. Every row links to the original source.</li>
+      </ul>
+
+      <h2 id="sources">Sources</h2>
+      <p class="muted">Every source currently switched on, with its terms of use:</p>
+      <!-- sources-list -->
+
+      <h2 id="modes">Kinds of tiles</h2>
+      <ul>
+        <li><strong>Updates</strong> come from official or approved sources on a schedule.</li>
+        <li><strong>Curated</strong> tiles, such as cricket fixtures and festivals, are written and checked by hand.</li>
+        <li><strong>Useful links</strong> tiles are hand-picked website lists, not feeds.</li>
+        <li><strong>Local</strong> tiles, such as your shortcuts and family clocks, are worked out in your browser.</li>
+      </ul>
+
+      <h2 id="contact">Contact</h2>
+      <p>Report a problem or suggest a source on <a href="https://github.com/ThefplAnalyst/desi-desktop/issues">GitHub Issues</a>. Publishers can ask us there to change or remove anything.</p>
+      <p><a href="/privacy/">Privacy</a> · <a href="/">Back to Desi Desktop</a></p>
     </main>
+
+    <footer class="site-footer">
+      <a href="/about/" aria-current="page">About &amp; Sources</a> · <a href="/privacy/">Privacy</a> · <a href="/help/">Help</a>
+    </footer>
   </body>
 </html>

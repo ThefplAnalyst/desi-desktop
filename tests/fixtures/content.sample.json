@@ -1,0 +1,639 @@
+{
+  "_comment": "DEVELOPMENT-ONLY sample data. Placeholder titles and example.org links; not real content. Never deploy.",
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-20T12:00:00.000Z",
+  "contentHash": "dev-fixture",
+  "tiles": {
+    "india-news": {
+      "mode": "live",
+      "title": "India Updates",
+      "state": "fresh",
+      "fallbackLinks": [
+        {
+          "title": "Sample PIB link (dev fixture)",
+          "url": "https://example.org/pib"
+        }
+      ],
+      "items": [
+        {
+          "id": "0000000000000001",
+          "title": "Sample India visa notice (dev fixture)",
+          "url": "https://example.org/pib/2",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:59:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000002",
+          "title": "Sample row about India (dev fixture)",
+          "url": "https://example.org/pib/3",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:55:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000003",
+          "title": "Sample row about visa (dev fixture)",
+          "url": "https://example.org/pib/4",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:51:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000004",
+          "title": "Sample ＶＩＳＡ fullwidth row (dev fixture)",
+          "url": "https://example.org/pib/5",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:47:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000005",
+          "title": "Sample row five (dev fixture)",
+          "url": "https://example.org/pib/6",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:43:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000006",
+          "title": "Sample row six (dev fixture)",
+          "url": "https://example.org/pib/7",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:39:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000007",
+          "title": "Sample row seven (dev fixture)",
+          "url": "https://example.org/pib/8",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:35:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000008",
+          "title": "Sample Diwali travel row (dev fixture)",
+          "url": "https://example.org/pib/9",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:31:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000009",
+          "title": "Sample row nine (dev fixture)",
+          "url": "https://example.org/pib/10",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:27:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "000000000000000a",
+          "title": "Sample row ten (dev fixture)",
+          "url": "https://example.org/pib/11",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:23:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "000000000000000b",
+          "title": "Sample row eleven (dev fixture)",
+          "url": "https://example.org/pib/12",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:19:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "000000000000000c",
+          "title": "Sample row twelve (dev fixture)",
+          "url": "https://example.org/pib/13",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:15:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "000000000000000d",
+          "title": "Sample row thirteen (dev fixture)",
+          "url": "https://example.org/pib/14",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:11:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "000000000000000e",
+          "title": "Sample Diwali lights row (dev fixture)",
+          "url": "https://example.org/pib/15",
+          "sourceId": "pib",
+          "publishedAt": "2026-11-20T11:07:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        }
+      ]
+    },
+    "us-news": {
+      "mode": "live",
+      "title": "US Updates",
+      "state": "partial",
+      "fallbackLinks": [],
+      "items": [
+        {
+          "id": "000000000000000f",
+          "title": "Sample federal notice 1 (dev fixture)",
+          "url": "https://example.org/federal-register/16",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T10:05:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000010",
+          "title": "Sample federal notice 2 (dev fixture)",
+          "url": "https://example.org/federal-register/17",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T11:10:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000011",
+          "title": "Sample federal notice 3 (dev fixture)",
+          "url": "https://example.org/federal-register/18",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T09:15:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000012",
+          "title": "Sample federal notice 4 (dev fixture)",
+          "url": "https://example.org/federal-register/19",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T10:20:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000013",
+          "title": "Sample federal notice 5 (dev fixture)",
+          "url": "https://example.org/federal-register/20",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T11:25:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000014",
+          "title": "Sample federal notice 6 (dev fixture)",
+          "url": "https://example.org/federal-register/21",
+          "sourceId": "federal-register",
+          "publishedAt": "2026-11-20T09:30:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        }
+      ]
+    },
+    "visa": {
+      "mode": "live",
+      "title": "Visa & Immigration",
+      "state": "fresh",
+      "fallbackLinks": [
+        {
+          "title": "Sample USCIS newsroom link (dev fixture)",
+          "url": "https://example.org/uscis"
+        }
+      ],
+      "items": [
+        {
+          "id": "0000000000000015",
+          "title": "Sample USCIS update one (dev fixture)",
+          "url": "https://example.org/uscis-news/22",
+          "sourceId": "uscis-news",
+          "publishedAt": "2026-11-20T06:30:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000016",
+          "title": "Sample USCIS update two (dev fixture)",
+          "url": "https://example.org/uscis-news/23",
+          "sourceId": "uscis-news",
+          "publishedAt": "2026-11-20T05:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000017",
+          "title": "Sample current Visa Bulletin link (dev fixture)",
+          "url": "https://example.org/visa-bulletin/24",
+          "sourceId": "visa-bulletin",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        },
+        {
+          "id": "0000000000000018",
+          "title": "Sample next Visa Bulletin link (dev fixture)",
+          "url": "https://example.org/visa-bulletin/25",
+          "sourceId": "visa-bulletin",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null
+        }
+      ]
+    },
+    "currency": {
+      "mode": "live",
+      "title": "Currency",
+      "state": "fresh",
+      "fallbackLinks": [],
+      "items": [
+        {
+          "id": "0000000000000019",
+          "title": "Sample USD to INR rate (dev fixture)",
+          "url": "https://example.org/frankfurter/26",
+          "sourceId": "frankfurter",
+          "publishedAt": "2026-11-20T00:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null,
+          "value": "100.00",
+          "change": 0.5
+        },
+        {
+          "id": "000000000000001a",
+          "title": "Sample USD to PKR rate (dev fixture)",
+          "url": "https://example.org/frankfurter/27",
+          "sourceId": "frankfurter",
+          "publishedAt": "2026-11-20T00:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null,
+          "value": "200.00",
+          "change": -0.25
+        },
+        {
+          "id": "000000000000001b",
+          "title": "Sample USD to BDT rate (dev fixture)",
+          "url": "https://example.org/frankfurter/28",
+          "sourceId": "frankfurter",
+          "publishedAt": "2026-11-20T00:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null,
+          "value": "300.00",
+          "change": 0.5
+        },
+        {
+          "id": "000000000000001c",
+          "title": "Sample USD to NPR rate (dev fixture)",
+          "url": "https://example.org/frankfurter/29",
+          "sourceId": "frankfurter",
+          "publishedAt": "2026-11-20T00:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null,
+          "value": "400.00",
+          "change": -0.25
+        },
+        {
+          "id": "000000000000001d",
+          "title": "Sample USD to LKR rate (dev fixture)",
+          "url": "https://example.org/frankfurter/30",
+          "sourceId": "frankfurter",
+          "publishedAt": "2026-11-20T00:00:00.000Z",
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": null,
+          "value": "500.00",
+          "change": 0.5
+        }
+      ]
+    },
+    "cricket": {
+      "mode": "curated",
+      "title": "Cricket",
+      "state": "fresh",
+      "fallbackLinks": [],
+      "items": [
+        {
+          "id": "000000000000001e",
+          "title": "Sample expired fixture (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/31",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-20T12:10:00.000Z",
+          "startsAt": "2026-11-20T08:00:00.000Z"
+        },
+        {
+          "id": "000000000000001f",
+          "title": "Sample fixture 1: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/32",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-21T22:00:00.000Z",
+          "startsAt": "2026-11-21T14:30:00.000Z"
+        },
+        {
+          "id": "0000000000000020",
+          "title": "Sample fixture 2: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/33",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-22T22:00:00.000Z",
+          "startsAt": "2026-11-22T14:30:00.000Z"
+        },
+        {
+          "id": "0000000000000021",
+          "title": "Sample fixture 3: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/34",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-23T22:00:00.000Z",
+          "startsAt": "2026-11-23T14:30:00.000Z"
+        },
+        {
+          "id": "0000000000000022",
+          "title": "Sample fixture 4: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/35",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-24T22:00:00.000Z",
+          "startsAt": "2026-11-24T14:30:00.000Z"
+        },
+        {
+          "id": "0000000000000023",
+          "title": "Sample fixture 5: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/36",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-25T22:00:00.000Z",
+          "startsAt": "2026-11-25T14:30:00.000Z"
+        },
+        {
+          "id": "0000000000000024",
+          "title": "Sample fixture 6: Team A v Team B (dev fixture)",
+          "url": "https://example.org/cricket-fixtures/37",
+          "sourceId": "cricket-fixtures",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-11-26T22:00:00.000Z",
+          "startsAt": "2026-11-26T14:30:00.000Z"
+        }
+      ]
+    },
+    "festivals": {
+      "mode": "curated",
+      "title": "Festivals & Holidays",
+      "state": "fresh",
+      "fallbackLinks": [],
+      "items": [
+        {
+          "id": "0000000000000025",
+          "title": "Sample holiday 1 (dev fixture)",
+          "url": "https://example.org/festivals/38",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-04T00:00:00.000Z",
+          "startsAt": "2026-12-03"
+        },
+        {
+          "id": "0000000000000026",
+          "title": "Sample holiday 2 (dev fixture)",
+          "url": "https://example.org/festivals/39",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-07T00:00:00.000Z",
+          "startsAt": "2026-12-06"
+        },
+        {
+          "id": "0000000000000027",
+          "title": "Sample holiday 3 (dev fixture)",
+          "url": "https://example.org/festivals/40",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-10T00:00:00.000Z",
+          "startsAt": "2026-12-09"
+        },
+        {
+          "id": "0000000000000028",
+          "title": "Sample holiday 4 (dev fixture)",
+          "url": "https://example.org/festivals/41",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-13T00:00:00.000Z",
+          "startsAt": "2026-12-12"
+        },
+        {
+          "id": "0000000000000029",
+          "title": "Sample holiday 5 (dev fixture)",
+          "url": "https://example.org/festivals/42",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-16T00:00:00.000Z",
+          "startsAt": "2026-12-15"
+        },
+        {
+          "id": "000000000000002a",
+          "title": "Sample holiday 6 (dev fixture)",
+          "url": "https://example.org/festivals/43",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-19T00:00:00.000Z",
+          "startsAt": "2026-12-18"
+        },
+        {
+          "id": "000000000000002b",
+          "title": "Sample holiday 7 (dev fixture)",
+          "url": "https://example.org/festivals/44",
+          "sourceId": "festivals",
+          "publishedAt": null,
+          "firstSeenAt": "2026-11-20T11:00:00.000Z",
+          "expiresAt": "2026-12-22T00:00:00.000Z",
+          "startsAt": "2026-12-21"
+        }
+      ]
+    },
+    "south-asia": {
+      "mode": "links",
+      "title": "South Asia News",
+      "state": "links",
+      "items": [],
+      "fallbackLinks": [
+        {
+          "title": "Sample South Asia directory link 1 (dev fixture)",
+          "url": "https://example.org/south-asia/1"
+        },
+        {
+          "title": "Sample South Asia directory link 2 (dev fixture)",
+          "url": "https://example.org/south-asia/2"
+        },
+        {
+          "title": "Sample South Asia directory link 3 (dev fixture)",
+          "url": "https://example.org/south-asia/3"
+        },
+        {
+          "title": "Sample South Asia directory link 4 (dev fixture)",
+          "url": "https://example.org/south-asia/4"
+        },
+        {
+          "title": "Sample South Asia directory link 5 (dev fixture)",
+          "url": "https://example.org/south-asia/5"
+        },
+        {
+          "title": "Sample South Asia directory link 6 (dev fixture)",
+          "url": "https://example.org/south-asia/6"
+        }
+      ]
+    },
+    "movies": {
+      "mode": "links",
+      "title": "Movies & OTT",
+      "state": "links",
+      "items": [],
+      "fallbackLinks": [
+        {
+          "title": "Sample streaming link 1 (dev fixture)",
+          "url": "https://example.org/movies/1"
+        },
+        {
+          "title": "Sample streaming link 2 (dev fixture)",
+          "url": "https://example.org/movies/2"
+        },
+        {
+          "title": "Sample streaming link 3 (dev fixture)",
+          "url": "https://example.org/movies/3"
+        }
+      ]
+    },
+    "tech": {
+      "mode": "links",
+      "title": "Tech & AI",
+      "state": "links",
+      "items": [],
+      "fallbackLinks": [
+        {
+          "title": "Sample developer blog link 1 (dev fixture)",
+          "url": "https://example.org/tech/1"
+        },
+        {
+          "title": "Sample developer blog link 2 (dev fixture)",
+          "url": "https://example.org/tech/2"
+        },
+        {
+          "title": "Sample developer blog link 3 (dev fixture)",
+          "url": "https://example.org/tech/3"
+        }
+      ]
+    },
+    "jobs": {
+      "mode": "links",
+      "title": "Jobs & Careers",
+      "state": "links",
+      "items": [],
+      "fallbackLinks": [
+        {
+          "title": "Sample careers link 1 (dev fixture)",
+          "url": "https://example.org/jobs/1"
+        },
+        {
+          "title": "Sample careers link 2 (dev fixture)",
+          "url": "https://example.org/jobs/2"
+        },
+        {
+          "title": "Sample careers link 3 (dev fixture)",
+          "url": "https://example.org/jobs/3"
+        }
+      ]
+    }
+  },
+  "weather": {
+    "austin": {
+      "issuedAt": "2026-11-20T11:00:00.000Z",
+      "url": "https://example.org/weather/austin",
+      "periods": [
+        {
+          "name": "This afternoon",
+          "tempF": 50,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-20T12:00:00.000Z",
+          "endsAt": "2026-11-21T00:00:00.000Z"
+        },
+        {
+          "name": "Tonight",
+          "tempF": 51,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-21T00:00:00.000Z",
+          "endsAt": "2026-11-21T12:00:00.000Z"
+        },
+        {
+          "name": "Saturday",
+          "tempF": 52,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-21T12:00:00.000Z",
+          "endsAt": "2026-11-22T00:00:00.000Z"
+        },
+        {
+          "name": "Saturday night",
+          "tempF": 53,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-22T00:00:00.000Z",
+          "endsAt": "2026-11-22T12:00:00.000Z"
+        }
+      ]
+    },
+    "new-york": {
+      "issuedAt": "2026-11-20T11:00:00.000Z",
+      "url": "https://example.org/weather/new-york",
+      "periods": [
+        {
+          "name": "This afternoon",
+          "tempF": 50,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-20T12:00:00.000Z",
+          "endsAt": "2026-11-21T00:00:00.000Z"
+        },
+        {
+          "name": "Tonight",
+          "tempF": 51,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-21T00:00:00.000Z",
+          "endsAt": "2026-11-21T12:00:00.000Z"
+        },
+        {
+          "name": "Saturday",
+          "tempF": 52,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-21T12:00:00.000Z",
+          "endsAt": "2026-11-22T00:00:00.000Z"
+        },
+        {
+          "name": "Saturday night",
+          "tempF": 53,
+          "summary": "Sample forecast (dev fixture)",
+          "startsAt": "2026-11-22T00:00:00.000Z",
+          "endsAt": "2026-11-22T12:00:00.000Z"
+        }
+      ]
+    }
+  }
+}

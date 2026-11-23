@@ -70,6 +70,36 @@ export interface SourceHealth {
   errorCode: string | null; // sanitized code only
 }
 
+/** Public attribution entry in /data/sources.json (spec 6.2), used by the About page. */
+export interface PublicSource {
+  id: string;
+  publisher: string;
+  attribution: string;
+  termsUrl: string;
+  mode: TileMode;
+}
+
+/** One tile in config/catalog.json. `hidden` tiles are not offered in Customize yet. */
+export interface CatalogEntry {
+  id: TileId;
+  title: string;
+  mode: TileMode;
+  defaultOn: boolean;
+  icon: string;
+  hidden?: boolean;
+}
+
+/** One metro area in config/metros.json (spec 6.5). */
+export interface Metro {
+  id: string;
+  name: string;
+  searchName: string; // place name used in map searches
+  lat: number;
+  lon: number;
+  timeZone: string;
+  nwsGridId: string | null; // cached NWS grid id, filled in M3
+}
+
 export interface Preferences {
   version: 1;
   tiles: TileId[]; // shown tiles, in order; [] is a valid choice

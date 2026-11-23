@@ -4,17 +4,63 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Desi Desktop</title>
-    <meta name="description" content="A free, fast start page for South Asians in the US." />
+    <meta name="description" content="A free, fast start page for South Asians in the US: Google search, India and US updates, visas, cricket, currency and family time." />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/src/styles/app.css" />
     <script type="module" src="/src/main.ts"></script>
   </head>
   <body>
+    <a class="skip-link" href="#grid">Skip to tiles</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="/">Desi Desktop</a>
+        <nav class="topbar-nav" aria-label="Site">
+          <button id="customize-open" class="topbar-button" type="button" aria-haspopup="dialog" hidden>Customize</button>
+          <a class="topbar-button" href="/help/">Help</a>
+        </nav>
+      </div>
+    </header>
+
     <main id="main">
-      <h1>Desi Desktop</h1>
-      <p class="muted">Skeleton build (M0). Search and tiles arrive in M1.</p>
+      <section class="hero" aria-labelledby="page-title">
+        <h1 id="page-title" class="visually-hidden">Desi Desktop</h1>
+        <p id="greeting" class="greeting"></p>
+        <p id="today" class="today"></p>
+        <form id="search-form" class="search" method="get" action="https://www.google.com/search" role="search">
+          <label for="q" class="visually-hidden">Search Google</label>
+          <input id="q" name="q" type="search" placeholder="Search Google" autocomplete="off" maxlength="2048" enterkeyhint="search" />
+          <button class="search-button" type="submit">Search</button>
+        </form>
+      </section>
+
+      <div id="tools" class="tools" hidden>
+        <label for="filter" class="visually-hidden">Filter tiles</label>
+        <input id="filter" class="filter" type="search" placeholder="Filter tiles" autocomplete="off" />
+        <p id="filter-status" class="visually-hidden" aria-live="polite"></p>
+      </div>
+
+      <p id="tip" class="tip" hidden>
+        <span>Tip: hide a tile with ×, or use Customize to add and move tiles. Your choices stay in this browser.</span>
+        <button id="tip-dismiss" class="link-button" type="button">Dismiss</button>
+      </p>
+      <p id="session-note" class="note" hidden>Changes are saved for this visit.</p>
+      <noscript><p class="note">Tiles and Customize need JavaScript. Search, Help and About &amp; Sources work without it.</p></noscript>
+
+      <section id="grid" class="grid" aria-label="Tiles" tabindex="-1"></section>
     </main>
+
     <footer class="site-footer">
       <a href="/about/">About &amp; Sources</a> · <a href="/privacy/">Privacy</a> · <a href="/help/">Help</a>
     </footer>
+
+    <div id="announcer" class="visually-hidden" aria-live="polite"></div>
+
+    <dialog id="customize" class="panel" aria-labelledby="customize-title">
+      <div class="panel-head">
+        <h2 id="customize-title">Customize</h2>
+        <button class="panel-close button secondary" type="button">Done</button>
+      </div>
+      <div class="panel-body"></div>
+    </dialog>
   </body>
 </html>

@@ -1,5 +1,6 @@
 import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
+import { aboutSources, devFixtures } from './scripts/vite-plugins.ts';
 
 const page = (path: string) => fileURLToPath(new URL(`app/${path}`, import.meta.url));
 
@@ -7,6 +8,7 @@ const page = (path: string) => fileURLToPath(new URL(`app/${path}`, import.meta.
 // that the assets-only Worker serves for unknown paths (spec 6.8).
 export default defineConfig({
   root: 'app',
+  plugins: [aboutSources(), devFixtures()],
   build: {
     outDir: '../dist',
     emptyOutDir: true,

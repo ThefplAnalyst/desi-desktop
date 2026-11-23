@@ -99,3 +99,29 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Biome instead of ESLint; tsx to run TypeScript; one shared tsconfig.
 - Reason: Fewest dependencies, mechanical enforcement of hard rules, and the app can't use Node APIs by accident.
 - Decided by: Claude Code
+
+## D29 — Accessible link colour (2026-11-23)
+- Context: Spec 6.6 accent #0071e3 as text on --bg #f5f5f7 is 4.31:1, below the 4.5:1 that NFR-A11Y requires (found by axe).
+- Decision: Add token `--link` (#0066cc light, #2997ff dark) for links and text buttons; keep `--accent` #0071e3 for filled buttons, icons and focus rings (white on #0071e3 is 4.7:1).
+- Alternatives: Darken --accent everywhere; ignore the failure.
+- Reason: Accessibility (NFR-A11Y) outranks an exact colour match; the look stays the same blue.
+- Decided by: Claude Code
+- Supersedes: spec 6.6 accent usage for text only
+
+## D30 — M1 app choices (2026-11-23)
+- Context: Spec details left open while building the app on fixtures.
+- Decision:
+  - Labels: partial tiles read "Updated N min ago · Some sources unavailable"; curated tiles have no header label and a footer "Curated by Desi Desktop"; stale reads "May be out of date"; links read "Useful links — not a live feed"; missing data reads "Nothing to show right now".
+  - Freshness in the browser: a tile's "Updated" age is its oldest source's last success; any stale source makes the tile stale; rows from a source with no success in 48 h are dropped (tile falls back to links); headline rows older than 7 days are dropped.
+  - Family Time shows six clocks as a compact block above the weather rows (clocks are not filterable rows), so the forecast is visible without "Show more".
+  - Prayer Times is hidden from the catalog until M5 (needs `adhan`); Deals stays hidden until its feed exists.
+  - `config/metros.json` adds a `searchName` per metro (e.g. "Edison, NJ" for New Jersey Central) for Near Me map searches; NWS grid ids are filled in M3.
+  - Shared types `PublicSource`, `CatalogEntry`, `Metro` added to `shared/contracts.ts` (additions only; spec 6.2 names unchanged).
+  - About & Sources is generated at build time from `config/sources.json` (enabled + approved only), so it works without JavaScript; until the registry exists (M2) it says "No sources are switched on yet."
+  - Contact is GitHub Issues on the public repo, so no personal email is published.
+  - Curated links in the no-JavaScript page arrive with curated content in M2.
+  - Shortcut editing lives in the Customize panel; Reset uses an inline confirm, not a browser pop-up (NFR-UI).
+  - Sample data (`tests/fixtures/*.sample.json`) uses placeholder titles marked "(dev fixture)" and example.org links. `npm run dev` serves it with timestamps shifted to look 25 minutes old; e2e tests serve it through Playwright routes with a fixed clock. It is never part of a build.
+  - E2E: synthetic drag-and-drop is skipped on Firefox (Playwright crashes); WebKit's skip-link check focuses the link directly because WebKit leaves links out of the Tab order by default.
+- Reason: Closest to the spec's principles (honest, simple, calm) with full test coverage.
+- Decided by: Claude Code

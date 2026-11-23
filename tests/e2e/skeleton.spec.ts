@@ -1,6 +1,7 @@
 import { expect, test } from '@playwright/test';
+import { withData } from './helpers.ts';
 
-// M0 exit criterion (spec 7.1): the multipage build produces working pages.
+// M0 exit criterion (spec 7.1): every page of the multipage build loads cleanly.
 const pages = [
   { path: '/', heading: 'Desi Desktop' },
   { path: '/help/', heading: 'Help' },
@@ -16,6 +17,7 @@ for (const { path, heading } of pages) {
     page.on('console', (m) => {
       if (m.type() === 'error') errors.push(m.text());
     });
+    await withData(page);
 
     const res = await page.goto(path);
     expect(res?.ok()).toBe(true);
@@ -23,8 +25,3 @@ for (const { path, heading } of pages) {
     expect(errors).toEqual([]);
   });
 }
-
-test('M0 skeleton: home page runs its bundled module script', async ({ page }) => {
-  await page.goto('/');
-  await expect(page.locator('html')).toHaveAttribute('data-js', 'on');
-});

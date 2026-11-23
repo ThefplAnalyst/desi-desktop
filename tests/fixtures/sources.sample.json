@@ -1,0 +1,61 @@
+{
+  "_comment": "DEVELOPMENT-ONLY sample data.",
+  "sources": [
+    {
+      "id": "pib",
+      "publisher": "Press Information Bureau",
+      "attribution": "PIB",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "federal-register",
+      "publisher": "Federal Register",
+      "attribution": "Federal Register",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "uscis-news",
+      "publisher": "USCIS",
+      "attribution": "USCIS",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "visa-bulletin",
+      "publisher": "US Department of State",
+      "attribution": "State Department",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "frankfurter",
+      "publisher": "Frankfurter",
+      "attribution": "Frankfurter",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "nws",
+      "publisher": "National Weather Service",
+      "attribution": "National Weather Service",
+      "termsUrl": "https://example.org/terms",
+      "mode": "live"
+    },
+    {
+      "id": "cricket-fixtures",
+      "publisher": "Desi Desktop",
+      "attribution": "Desi Desktop",
+      "termsUrl": "https://example.org/terms",
+      "mode": "curated"
+    },
+    {
+      "id": "festivals",
+      "publisher": "Desi Desktop",
+      "attribution": "Desi Desktop",
+      "termsUrl": "https://example.org/terms",
+      "mode": "curated"
+    }
+  ]
+}

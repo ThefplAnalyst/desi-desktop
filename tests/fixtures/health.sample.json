@@ -1,0 +1,94 @@
+{
+  "_comment": "DEVELOPMENT-ONLY sample data.",
+  "generatedAt": "2026-11-20T12:00:00.000Z",
+  "sources": [
+    {
+      "id": "pib",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T12:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 90,
+      "errorCode": null
+    },
+    {
+      "id": "federal-register",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T11:30:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 180,
+      "errorCode": null
+    },
+    {
+      "id": "uscis-news",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T07:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 180,
+      "errorCode": null
+    },
+    {
+      "id": "visa-bulletin",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T06:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 4320,
+      "errorCode": null
+    },
+    {
+      "id": "frankfurter",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T09:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 1080,
+      "errorCode": null
+    },
+    {
+      "id": "nws",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T11:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 540,
+      "errorCode": null
+    },
+    {
+      "id": "cricket-fixtures",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T12:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 1440,
+      "errorCode": null
+    },
+    {
+      "id": "festivals",
+      "state": "ok",
+      "lastAttemptAt": "2026-11-20T12:00:00.000Z",
+      "lastSuccessAt": "2026-11-20T12:00:00.000Z",
+      "consecutiveFailures": 0,
+      "etag": null,
+      "lastModified": null,
+      "staleAfterMinutes": 1440,
+      "errorCode": null
+    }
+  ]
+}
