@@ -57,7 +57,9 @@ export function rowsFor(run: SourceRun, previousRows: Map<string, Item[]>, now: 
       if (i.startsAt) return true; // events live until expiresAt
       return now - Date.parse(i.publishedAt ?? i.firstSeenAt) <= maxAgeMs;
     }),
-  ).slice(0, run.source.maxItems);
+  )
+    .sort((a, b) => (a.startsAt || b.startsAt ? bySoonest(a, b) : byNewest(a, b)))
+    .slice(0, run.source.maxItems);
 }
 
 const byNewest = (a: Item, b: Item) => {

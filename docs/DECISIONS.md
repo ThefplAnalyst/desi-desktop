@@ -156,3 +156,23 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
   - `npm run build:local:engine` previews the engine's own bundle on the owner's local server.
 - Reason: Honest by default (nothing publishes without owner approval and verification), simple, and fully testable offline.
 - Decided by: Claude Code
+
+## D34 — M3 launch adapters and live findings (2026-11-23)
+- Context: First real requests to the launch sources (one per source, honest User-Agent naming the public repo as contact; no personal details sent).
+- Findings (`npm run content:probe`, technical availability only):
+  - USCIS RSS, Federal Register API, NWS (20 metros), Frankfurter v1 and ExchangeRate-API open access answer and parse into valid rows.
+  - **PIB** and **travel.state.gov** answer the bot with 403 (CDN bot blocking). We do not disguise the bot as a browser (principle 1, spec 5.5).
+  - **Frankfurter** (ECB reference rates) covers only INR of USD→INR/PKR/BDT/NPR/LKR; Frankfurter v2 does not exist.
+- Decision:
+  - PIB keeps its adapter and endpoint but stays on links; the owner may ask PIB to allow DesiDesktopBot.
+  - Visa Bulletin: the adapter builds the current month's link (fiscal-year folder pattern) without a request; the next month's link is omitted because it cannot be checked. Owner clicks the link once to confirm the pattern.
+  - Currency: add `exchangerate-api` (draft) covering all five currencies (not a central-bank rate, attribution required, no daily change). The owner approves Frankfurter (INR, official, with change) or ExchangeRate-API (all five), not both.
+  - Federal Register: two registry entries — `federal-register` (USCIS, State, DHS, Labor, Treasury → US Updates) and `federal-register-immigration` (USCIS only, no keyword filter → Visa tile). A keyword filter over USCIS+State+DHS kept 0 of 20 real titles.
+  - Date-only sources: Federal Register publication dates become 05:00 UTC (midnight US Eastern) and ECB rate dates become 00:00 UTC — the earliest true moment, never the fetch time.
+  - RSS pubDate with 2-digit years ("Mon, 23 Nov 26 …", seen at USCIS) is read as 20xx.
+  - NWS grid ids for all 20 metros are cached in `config/metros.json` (time zones matched NWS for every metro). The NWS adapter produces the bundle's `weather` map; one failing metro does not hide the others; failed runs reuse previous forecasts within 24 h, dropping ended periods.
+  - XML: DTDs/entity declarations refused before parsing, validator rejects malformed/truncated XML, entity processing off (decoded once in normalize.ts), HTML pages rejected.
+  - `npm run content:probe` fetches sources whatever their rights status, to verify endpoints and parsers (the "verified" step of spec 5.1). It saves counts and error codes to `tmp/probe.json` only — no titles, rows or bodies — and never publishes.
+  - CricketData adapter built and tested; registered as draft and off (D21); not probed (needs a key).
+- Reason: Honest identification and rights-first publishing, with each tile still useful at launch.
+- Decided by: Claude Code

@@ -5,11 +5,18 @@
       "id": "pib",
       "publisher": "Press Information Bureau, Government of India",
       "adapter": "rss",
-      "endpoint": null,
-      "allowedHosts": ["www.pib.gov.in"],
-      "tiles": ["india-news"],
+      "endpoint": "https://www.pib.gov.in/RssMain.aspx?ModId=6&Lang=1&Regid=3",
+      "allowedHosts": [
+        "www.pib.gov.in"
+      ],
+      "tiles": [
+        "india-news"
+      ],
       "official": true,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 30,
       "maxItems": 20,
       "maxRetentionHours": 168,
@@ -20,23 +27,39 @@
         "basis": "Government of India press releases; see PIB copyright policy",
         "termsUrl": "https://www.pib.gov.in/content/186_2_Copyright-Policy.aspx?lang=1&reg=5",
         "commercialUse": null,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
-      "fallbackLinks": [{ "title": "PIB press releases", "url": "https://www.pib.gov.in/" }],
-      "notes": "Feed endpoint chosen and verified in M3 (spec 5.6)."
+      "fallbackLinks": [
+        {
+          "title": "PIB press releases",
+          "url": "https://www.pib.gov.in/"
+        }
+      ],
+      "notes": "English, all ministries. On 2026-11-23 PIB's CDN answered the honest bot User-Agent with 403 Access Denied, so the feed could not be verified. Owner: ask PIB to allow DesiDesktopBot, or keep this tile on links."
     },
     {
       "id": "federal-register",
       "publisher": "Federal Register (Office of the Federal Register, NARA)",
       "adapter": "federal-register",
       "endpoint": "https://www.federalregister.gov/api/v1/documents.json",
-      "allowedHosts": ["www.federalregister.gov"],
-      "tiles": ["us-news", "visa"],
+      "allowedHosts": [
+        "www.federalregister.gov"
+      ],
+      "tiles": [
+        "us-news"
+      ],
       "official": true,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 60,
       "maxItems": 20,
       "maxRetentionHours": 168,
@@ -47,23 +70,100 @@
         "basis": "US government work (public domain)",
         "termsUrl": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api",
         "commercialUse": null,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
-      "fallbackLinks": [{ "title": "Federal Register", "url": "https://www.federalregister.gov/" }],
-      "notes": "Agencies: USCIS, State, Homeland Security, Labor, Treasury (query built in M3)."
+      "fallbackLinks": [
+        {
+          "title": "Federal Register",
+          "url": "https://www.federalregister.gov/"
+        }
+      ],
+      "notes": "Verified 2026-11-23: endpoint answers JSON with title, html_url, publication_date, document_number.",
+      "params": {
+        "agencies": [
+          "u-s-citizenship-and-immigration-services",
+          "state-department",
+          "homeland-security-department",
+          "labor-department",
+          "treasury-department"
+        ]
+      }
+    },
+    {
+      "id": "federal-register-immigration",
+      "publisher": "Federal Register (Office of the Federal Register, NARA)",
+      "adapter": "federal-register",
+      "endpoint": "https://www.federalregister.gov/api/v1/documents.json",
+      "allowedHosts": [
+        "www.federalregister.gov"
+      ],
+      "tiles": [
+        "visa"
+      ],
+      "official": true,
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
+      "minIntervalMinutes": 60,
+      "maxItems": 20,
+      "maxRetentionHours": 168,
+      "attribution": "Federal Register",
+      "enabled": false,
+      "rights": {
+        "status": "draft",
+        "basis": "US government work (public domain)",
+        "termsUrl": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api",
+        "commercialUse": null,
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "reviewDueAt": null
+      },
+      "fallbackLinks": [],
+      "notes": "USCIS documents in the Federal Register, for the Visa tile (every USCIS document concerns immigration, so no keyword filter; a keyword filter on USCIS+State+DHS kept 0 of 20 on 2026-11-23). Decision D34.",
+      "params": {
+        "agencies": [
+          "u-s-citizenship-and-immigration-services"
+        ]
+      }
     },
     {
       "id": "uscis-news",
       "publisher": "U.S. Citizenship and Immigration Services",
       "adapter": "rss",
       "endpoint": "https://www.uscis.gov/news/rss-feed/59144",
-      "allowedHosts": ["www.uscis.gov"],
-      "tiles": ["visa"],
+      "allowedHosts": [
+        "www.uscis.gov"
+      ],
+      "tiles": [
+        "visa"
+      ],
       "official": true,
-      "relevance": { "include": ["visa", "h-1b", "green card", "citizenship", "daca", "tps", "fee", "form i-"], "exclude": [] },
+      "relevance": {
+        "include": [
+          "visa",
+          "h-1b",
+          "green card",
+          "citizenship",
+          "daca",
+          "tps",
+          "fee",
+          "form i-"
+        ],
+        "exclude": []
+      },
       "minIntervalMinutes": 60,
       "maxItems": 20,
       "maxRetentionHours": 168,
@@ -74,22 +174,39 @@
         "basis": "US government work (public domain)",
         "termsUrl": "https://www.uscis.gov/website-policies",
         "commercialUse": null,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
-      "fallbackLinks": [{ "title": "USCIS newsroom", "url": "https://www.uscis.gov/newsroom" }]
+      "fallbackLinks": [
+        {
+          "title": "USCIS newsroom",
+          "url": "https://www.uscis.gov/newsroom"
+        }
+      ],
+      "notes": "Verified 2026-11-23: RSS 2.0, 250 items, pubDate with 2-digit years (handled)."
     },
     {
       "id": "visa-bulletin",
       "publisher": "U.S. Department of State, Bureau of Consular Affairs",
       "adapter": "visa-bulletin",
       "endpoint": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
-      "allowedHosts": ["travel.state.gov"],
-      "tiles": ["visa"],
+      "allowedHosts": [
+        "travel.state.gov"
+      ],
+      "tiles": [
+        "visa"
+      ],
       "official": true,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 720,
       "maxItems": 2,
       "maxRetentionHours": 1440,
@@ -100,22 +217,38 @@
         "basis": "US government work (public domain); links only",
         "termsUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
         "commercialUse": null,
-        "allowedFields": ["title", "url"],
+        "allowedFields": [
+          "title",
+          "url"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
-      "fallbackLinks": [{ "title": "Visa Bulletin", "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html" }]
+      "fallbackLinks": [
+        {
+          "title": "Visa Bulletin",
+          "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
+        }
+      ],
+      "notes": "No network: travel.state.gov answers automated requests with 403 (2026-11-23). The adapter builds the current month's link from the URL pattern; owner: click it once to confirm."
     },
     {
       "id": "frankfurter",
       "publisher": "Frankfurter (open-source exchange-rate API)",
       "adapter": "fx",
-      "endpoint": null,
-      "allowedHosts": ["api.frankfurter.dev"],
-      "tiles": ["currency"],
+      "endpoint": "https://api.frankfurter.dev/v1/",
+      "allowedHosts": [
+        "api.frankfurter.dev"
+      ],
+      "tiles": [
+        "currency"
+      ],
       "official": false,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 360,
       "maxItems": 5,
       "maxRetentionHours": 72,
@@ -126,23 +259,90 @@
         "basis": "Free public API of central-bank reference rates",
         "termsUrl": "https://frankfurter.dev/",
         "commercialUse": null,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
       "fallbackLinks": [],
-      "notes": "Endpoint and PKR/BDT/NPR/LKR coverage verified in M3 (spec 5.6)."
+      "notes": "Verified 2026-11-23: v1 works (v2 does not exist). Central-bank (ECB) reference rates cover INR only of our five currencies. Approve this OR exchangerate-api, not both, or INR appears twice.",
+      "params": {
+        "symbols": [
+          "INR",
+          "PKR",
+          "BDT",
+          "NPR",
+          "LKR"
+        ]
+      }
+    },
+    {
+      "id": "exchangerate-api",
+      "publisher": "ExchangeRate-API (open access)",
+      "adapter": "fx",
+      "endpoint": "https://open.er-api.com/v6/latest/USD",
+      "allowedHosts": [
+        "open.er-api.com"
+      ],
+      "tiles": [
+        "currency"
+      ],
+      "official": false,
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
+      "minIntervalMinutes": 720,
+      "maxItems": 5,
+      "maxRetentionHours": 72,
+      "attribution": "Rates by ExchangeRate-API",
+      "enabled": false,
+      "rights": {
+        "status": "draft",
+        "basis": "Free open-access API; terms require attribution with a link and limit request rates",
+        "termsUrl": "https://www.exchangerate-api.com/terms",
+        "commercialUse": null,
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "reviewDueAt": null
+      },
+      "fallbackLinks": [],
+      "params": {
+        "symbols": [
+          "INR",
+          "PKR",
+          "BDT",
+          "NPR",
+          "LKR"
+        ]
+      },
+      "notes": "Verified 2026-11-23: covers all five currencies; updates daily; no history, so no daily change. Not a central-bank rate. Owner: read the terms (attribution required)."
     },
     {
       "id": "nws",
       "publisher": "National Weather Service (NOAA)",
       "adapter": "nws",
       "endpoint": "https://api.weather.gov/",
-      "allowedHosts": ["api.weather.gov"],
-      "tiles": ["time-weather"],
+      "allowedHosts": [
+        "api.weather.gov"
+      ],
+      "tiles": [
+        "time-weather"
+      ],
       "official": true,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 180,
       "maxItems": 14,
       "maxRetentionHours": 24,
@@ -153,12 +353,17 @@
         "basis": "US government open data (public domain)",
         "termsUrl": "https://www.weather.gov/disclaimer",
         "commercialUse": null,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
-      "fallbackLinks": []
+      "fallbackLinks": [],
+      "notes": "Verified 2026-11-23: points lookups for all 20 metros; grid ids cached in config/metros.json. NWS asks for contact details in the User-Agent: set OWNER_CONTACT_EMAIL in M4."
     },
     {
       "id": "cricket-fixtures",
@@ -167,9 +372,14 @@
       "endpoint": null,
       "file": "cricket-fixtures.json",
       "allowedHosts": [],
-      "tiles": ["cricket"],
+      "tiles": [
+        "cricket"
+      ],
       "official": false,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 30,
       "maxItems": 20,
       "maxRetentionHours": 8784,
@@ -180,7 +390,11 @@
         "basis": "Original content written for Desi Desktop",
         "termsUrl": null,
         "commercialUse": true,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
@@ -194,9 +408,14 @@
       "endpoint": null,
       "file": "festivals.json",
       "allowedHosts": [],
-      "tiles": ["festivals"],
+      "tiles": [
+        "festivals"
+      ],
       "official": false,
-      "relevance": { "include": [], "exclude": [] },
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
       "minIntervalMinutes": 30,
       "maxItems": 20,
       "maxRetentionHours": 8784,
@@ -207,12 +426,62 @@
         "basis": "Original content written for Desi Desktop",
         "termsUrl": null,
         "commercialUse": true,
-        "allowedFields": ["title", "url", "publishedAt"],
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
         "reviewedBy": null,
         "reviewedAt": null,
         "reviewDueAt": null
       },
       "fallbackLinks": []
+    },
+    {
+      "id": "cricketdata",
+      "publisher": "CricketData.org",
+      "adapter": "cricketdata",
+      "endpoint": "https://api.cricapi.com/v1/currentMatches",
+      "allowedHosts": [
+        "api.cricapi.com"
+      ],
+      "tiles": [
+        "cricket"
+      ],
+      "official": false,
+      "relevance": {
+        "include": [
+          "india",
+          "pakistan",
+          "bangladesh",
+          "sri lanka",
+          "nepal",
+          "united states",
+          "usa"
+        ],
+        "exclude": []
+      },
+      "minIntervalMinutes": 60,
+      "maxItems": 10,
+      "maxRetentionHours": 48,
+      "attribution": "CricketData",
+      "enabled": false,
+      "rights": {
+        "status": "draft",
+        "basis": "Commercial API; needs an API key (CRICKETDATA_KEY) and possibly a paid plan",
+        "termsUrl": "https://cricketdata.org/pricing/",
+        "commercialUse": null,
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
+        "reviewedBy": null,
+        "reviewedAt": null,
+        "reviewDueAt": null
+      },
+      "fallbackLinks": [],
+      "notes": "Built but OFF (decision D21). Not probed: needs a key."
     }
   ]
 }

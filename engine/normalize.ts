@@ -65,7 +65,9 @@ export function parseDate(raw: string | null | undefined, now: number): string |
   if (!raw) return null;
   const s = raw.trim();
   if (!ISO.test(s) && !RFC822.test(s)) return null;
-  const t = Date.parse(s.replace(/\s+(UT)$/i, ' GMT'));
+  // RSS feeds (e.g. USCIS) may use 2-digit years: "Mon, 23 Nov 26 09:56:22 -0500" means 2026.
+  const fourDigitYear = s.replace(/^((?:[A-Za-z]{3},\s*)?\d{1,2}\s+[A-Za-z]{3}\s+)(\d{2})(\s)/, '$120$2$3');
+  const t = Date.parse(fourDigitYear.replace(/\s+(UT)$/i, ' GMT'));
   if (Number.isNaN(t) || t < Date.UTC(2000, 0, 1) || t > now + 24 * 3600_000) return null;
   return toIso(t);
 }

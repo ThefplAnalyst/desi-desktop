@@ -10,7 +10,7 @@ const festivals = cfg.registry.find((s) => s.id === 'festivals');
 describe('ENG-04 D25 curated adapter', () => {
   it('D25 refuses curated files the owner has not verified, unless it is a dev preview', async () => {
     if (!festivals) throw new Error('festivals source missing');
-    const ctx = { source: festivals, now: NOW, root: '.', http: deps().http, previous: undefined };
+    const ctx = { source: festivals, now: NOW, root: '.', http: deps().http, previous: undefined, metros: [] };
     expect(await curatedAdapter({ ...ctx, allowUnverified: false })).toEqual({ kind: 'error', code: 'curated-unverified' });
     const r = await curatedAdapter({ ...ctx, allowUnverified: true });
     expect(r.kind).toBe('ok');
