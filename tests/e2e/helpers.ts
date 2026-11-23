@@ -58,5 +58,7 @@ export async function openCustomize(page: Page) {
   await page.getByRole('button', { name: 'Customize', exact: true }).click();
   const dialog = page.getByRole('dialog', { name: 'Customize' });
   await dialog.waitFor();
+  // Let the 240 ms slide-in finish, so checks (e.g. axe contrast) see the panel at full opacity.
+  await dialog.evaluate((el) => Promise.all(el.getAnimations().map((a) => a.finished)));
   return dialog;
 }
