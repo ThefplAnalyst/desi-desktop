@@ -1,0 +1,9 @@
+{
+  // Browser code only. No Node types, so Node APIs cannot leak into the app.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "types": []
+  },
+  "include": ["src", "../shared"]
+}

@@ -86,3 +86,16 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Reason: Spec 4.3 asks for the active LTS; owner installed Node 26.
 - Decided by: Owner
 - Supersedes: D23
+
+## D28 — M0 tooling choices (2026-11-23)
+- Context: The spec names the stack (6.1, 4.3) but leaves some tooling details open.
+- Decision:
+  - Lint with ESLint 10 + typescript-eslint (strict). Lint rules enforce the CLAUDE.md app/engine/shared import boundaries and ban innerHTML/outerHTML/insertAdjacentHTML/document.write/eval in app code (NFR-SEC). A Vitest test re-checks the boundaries.
+  - Two TypeScript configs: root `tsconfig.json` (engine, shared, tests, scripts; Node types) and `app/tsconfig.json` (browser; no Node types).
+  - Node-side TypeScript (engine, scripts) runs with Node 26's built-in type stripping, so no tsx or ts-node dependency. Code therefore uses erasable syntax only (`erasableSyntaxOnly`).
+  - The budget check lives in `scripts/check-budgets.ts` (a folder not listed in spec 6.1) and runs as part of `npm run build`.
+  - `shared/contracts.ts` holds the spec 6.2 types only for now; Zod schemas are added in M2 when the engine first validates. The app imports types only, so Zod never enters the browser bundle.
+  - Vite 8 `build.rolldownOptions` (the new name for `rollupOptions`); module-preload polyfill off.
+- Alternatives: Biome instead of ESLint; tsx to run TypeScript; one shared tsconfig.
+- Reason: Fewest dependencies, mechanical enforcement of hard rules, and the app can't use Node APIs by accident.
+- Decided by: Claude Code
