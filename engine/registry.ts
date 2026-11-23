@@ -41,6 +41,8 @@ export const SourceSchema = z
     enabled: z.boolean(),
     rights: RightsSchema,
     fallbackLinks: z.array(LinkSchema).max(20).default([]),
+    /** Adapter-specific settings, e.g. Federal Register agencies or currency symbols. */
+    params: z.record(z.string(), z.union([z.string(), z.array(z.string())])).default({}),
     notes: z.string().optional(),
   })
   .strict()
