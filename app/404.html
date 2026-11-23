@@ -4,12 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Page not found · Desi Desktop</title>
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/src/styles/app.css" />
   </head>
   <body>
-    <main id="main">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="/">Desi Desktop</a>
+        <nav class="topbar-nav" aria-label="Site"><a class="topbar-button" href="/help/">Help</a></nav>
+      </div>
+    </header>
+    <main id="main" class="page">
       <h1>Page not found</h1>
+      <p>There is nothing at this address.</p>
+      <form class="search" method="get" action="https://www.google.com/search" role="search">
+        <label for="q" class="visually-hidden">Search Google</label>
+        <input id="q" name="q" type="search" placeholder="Search Google" autocomplete="off" maxlength="2048" />
+        <button class="search-button" type="submit">Search</button>
+      </form>
       <p><a href="/">Go to Desi Desktop</a></p>
     </main>
+    <footer class="site-footer">
+      <a href="/about/">About &amp; Sources</a> · <a href="/privacy/">Privacy</a> · <a href="/help/">Help</a>
+    </footer>
   </body>
 </html>

@@ -4,13 +4,68 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Help · Desi Desktop</title>
+    <meta name="description" content="How to use Desi Desktop and make it your start page." />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/src/styles/app.css" />
   </head>
   <body>
-    <main id="main">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="/">Desi Desktop</a>
+        <nav class="topbar-nav" aria-label="Site"><a class="topbar-button" href="/help/" aria-current="page">Help</a></nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
       <h1>Help</h1>
-      <p class="muted">Help content arrives in M1.</p>
+      <p>Desi Desktop is a start page: Google search on top, and tiles with updates for South Asians in the US below. Everything you change stays in this browser.</p>
+
+      <h2 id="tiles">Add, hide and move tiles</h2>
+      <ul>
+        <li><strong>Hide a tile:</strong> select the × in the tile's top corner. On a computer it appears when you point at the tile or move to it with the keyboard.</li>
+        <li><strong>Add a tile:</strong> select <strong>Customize</strong> at the top of the page, then switch a tile on under <strong>More tiles</strong>.</li>
+        <li><strong>Move a tile:</strong> in Customize, use the up and down arrows next to a tile, or drag it with a mouse.</li>
+        <li><strong>Your area:</strong> in Customize, pick one of 20 US metro areas for the weather and Desi Near Me. Desi Desktop never asks for your location.</li>
+        <li><strong>Start over:</strong> in Customize, select <strong>Reset to defaults</strong>.</li>
+      </ul>
+
+      <h2 id="filter">Filter tiles</h2>
+      <p>Type in <strong>Filter tiles</strong> below the search box to show only tiles and rows that contain every word you type, in any order. For example, “india visa” shows rows that mention both words. Press Escape to clear the filter. Moving tiles is turned off while a filter is active.</p>
+
+      <h2 id="labels">What the labels mean</h2>
+      <ul>
+        <li><strong>Updated 25 min ago:</strong> when that source last refreshed. Sources refresh on a schedule (about every 30 minutes to once a day); nothing here is live.</li>
+        <li><strong>May be out of date:</strong> a source has not refreshed for longer than usual.</li>
+        <li><strong>Useful links — not a live feed:</strong> a hand-picked list of websites, not headlines.</li>
+        <li><strong>Curated by Desi Desktop:</strong> dates and lists we write and check by hand, such as cricket fixtures and festivals.</li>
+      </ul>
+
+      <h2 id="saved">Where your settings are saved</h2>
+      <p>Your tiles, their order, your area, layout and shortcuts are saved in this browser's local storage. There is no account and nothing is sent to us. Clearing your browser's site data resets Desi Desktop, and your settings do not follow you to other browsers or devices. If your browser blocks storage, changes last only for the current visit.</p>
+
+      <h2 id="startup">Open Desi Desktop when your browser starts</h2>
+      <p>First copy this site's address from the address bar of the Desi Desktop home page.</p>
+      <h3>Chrome</h3>
+      <p>Settings → <strong>On startup</strong> → <strong>Open a specific page or set of pages</strong> → <strong>Add a new page</strong>, and paste the address.</p>
+      <h3>Edge</h3>
+      <p>Settings → <strong>Start, home, and new tabs</strong> → <strong>When Edge starts</strong> → <strong>Open these pages</strong> → <strong>Add a new page</strong>, and paste the address.</p>
+      <h3>Safari (Mac)</h3>
+      <p>Safari → Settings → <strong>General</strong>. Set <strong>Safari opens with</strong> to <strong>A new window</strong>, set <strong>New windows open with</strong> to <strong>Homepage</strong>, and paste the address into <strong>Homepage</strong>.</p>
+      <h3>Firefox</h3>
+      <p>Settings → <strong>Home</strong> → <strong>Homepage and new windows</strong> → <strong>Custom URLs</strong>, and paste the address. Then under <strong>General</strong>, make sure <strong>Open previous windows and tabs</strong> is turned off, so Firefox starts with Desi Desktop.</p>
+      <h3>iPhone and iPad</h3>
+      <p>Open Desi Desktop in Safari, select the <strong>Share</strong> button, then <strong>Add to Home Screen</strong>.</p>
+      <h3>Android</h3>
+      <p>Open Desi Desktop in Chrome, select the <strong>⋮</strong> menu, then <strong>Add to Home screen</strong> (or <strong>Install app</strong>).</p>
+
+      <h2 id="more">More</h2>
+      <p>See <a href="/about/">About &amp; Sources</a> for where each tile's content comes from, and <a href="/privacy/">Privacy</a> for what we do (and don't) collect.</p>
       <p><a href="/">Back to Desi Desktop</a></p>
     </main>
+
+    <footer class="site-footer">
+      <a href="/about/">About &amp; Sources</a> · <a href="/privacy/">Privacy</a> · <a href="/help/">Help</a>
+    </footer>
   </body>
 </html>

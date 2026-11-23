@@ -4,13 +4,45 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Privacy · Desi Desktop</title>
+    <meta name="description" content="Desi Desktop has no accounts, no cookies and no tracking." />
+    <meta name="color-scheme" content="light dark" />
     <link rel="stylesheet" href="/src/styles/app.css" />
   </head>
   <body>
-    <main id="main">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="wordmark" href="/">Desi Desktop</a>
+        <nav class="topbar-nav" aria-label="Site"><a class="topbar-button" href="/help/">Help</a></nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
       <h1>Privacy</h1>
-      <p class="muted">The full privacy page arrives in M1.</p>
+      <p>The short version: Desi Desktop has no accounts, sets no cookies, runs no ads or analytics, and keeps nothing about you on a server.</p>
+
+      <h2 id="browser">What stays in your browser</h2>
+      <p>Your tile choices and order, your metro area, layout and shortcuts are saved in your browser's local storage so they are there next time. They never leave your device. You can erase them by clearing this site's data in your browser.</p>
+
+      <h2 id="search">Searches</h2>
+      <p>The search box sends what you type straight to Google, the same as searching on google.com. Desi Desktop never sees or stores your searches. Google's privacy policy applies to them. The filter box works only inside your browser.</p>
+
+      <h2 id="location">Location</h2>
+      <p>Desi Desktop never asks for your location. If you pick a metro area for the weather, that choice stays in your browser; the forecasts for all areas are downloaded together, so nobody learns which one you chose.</p>
+
+      <h2 id="hosting">Hosting</h2>
+      <p>The site is a set of static files served by Cloudflare. Like any web host, Cloudflare handles standard connection data (such as your IP address) to deliver the pages. Desi Desktop does not receive or keep that data.</p>
+
+      <h2 id="links">Links to other sites</h2>
+      <p>Rows and links open other websites, such as news sources and government pages. Their own privacy policies apply once you leave Desi Desktop.</p>
+
+      <h2 id="contact">Questions</h2>
+      <p>Ask on <a href="https://github.com/ThefplAnalyst/desi-desktop/issues">GitHub Issues</a>.</p>
       <p><a href="/">Back to Desi Desktop</a></p>
     </main>
+
+    <footer class="site-footer">
+      <a href="/about/">About &amp; Sources</a> · <a href="/privacy/" aria-current="page">Privacy</a> · <a href="/help/">Help</a>
+    </footer>
   </body>
 </html>
