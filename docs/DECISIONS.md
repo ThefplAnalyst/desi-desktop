@@ -191,3 +191,16 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Keep them on links until a later review (rejected: they are the rights-cleanest sources available).
 - Reason: Official, public-domain sources give the Visa, US Updates and Time & Weather tiles real content at launch.
 - Decided by: Owner
+
+## D37 — Festivals verified; festival upkeep to become automatic (2026-11-23)
+- Context: The owner checked the 18 drafted festival dates and said "Festivals OK". The owner also wants the list to maintain itself: "check every month for changes and update automatically".
+- Decision: `content/curated/festivals.json` is marked verified by the owner (2026-11-23). The `festivals` source is approved and enabled (original content), with the review due 2027-11-23. Next step: replace the hand-kept date list with owner-verified **rules**, from which the engine computes the coming 12 months on every run:
+  - fixed days (for example 26 Jan);
+  - Nth-weekday US federal holidays (OPM rules);
+  - solar festivals (Sankranti, Vaisakhi, the April new years);
+  - Islamic dates from the built-in Umm al-Qura calendar (`Intl`, no dependency), shown as "(expected)" because South Asian moon sighting can differ by a day;
+  - Holi from a computed full-moon date, also "(expected)".
+  - A monthly scheduled check opens an Issue only when a rule cannot produce a date or a computed date moves. No AI writes or changes festival content, and no website is scraped.
+- Alternatives: A paid holiday API (rejected: $0 rule; most do not cover India and Nepal). Monthly manual edits (rejected: the owner wants no routine chore).
+- Reason: Runs itself (principle 5) while staying honest: dates come from rules the owner verified once, and lunar dates are labelled as expected.
+- Decided by: Owner (goal, verification); Claude Code (approach)
