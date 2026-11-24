@@ -220,3 +220,14 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Deploy from both CI and refresh (rejected: two paths race and need two rollbacks). Commit health to git (rejected: noisy history every 30 minutes). Store previous content in the cache (rejected: spec 5.7).
 - Reason: Runs itself safely on free tiers (principle 5); every first deploy still waits for the owner.
 - Decided by: Claude Code
+
+## D40 — 4 columns by default and compact tiles (2026-11-23)
+- Context: After viewing the site locally, the owner said too much space is wasted and asked for 4×N, compact cards and less space between items.
+- Decision:
+  - **4 columns by default at ≥ 1280 px** (`defaults().columns` is 4). Below 1280 px nothing changes (3 / 2 / 1). "3 columns" stays in Customize, and a saved 3 is kept. This overrides the D12 default ("default stays calm") and FR-02's "optional" wording.
+  - **Compact spacing.** The hero and grid gaps are smaller, tile padding is 10/14 px, and title, label and footer margins are tighter.
+  - **Rows are 32 px with a mouse or trackpad (`pointer: fine`)**, with 4 px vertical padding, and so are the hide (×) and "more" buttons. Touch screens keep 44 px targets. This narrows NFR-A11Y's 44 px rule to touch input. 32 px still passes WCAG 2.2 AA target size (2.5.8, 24 px minimum).
+  - Font sizes are unchanged (spec 6.6).
+- Alternatives: A separate "compact" setting (rejected: the owner wants it as the default). Shrinking rows on touch too (rejected: harder to tap on phones).
+- Reason: Shows more at a glance on desktop, the main use (a homepage tab), and keeps phones comfortable.
+- Decided by: Owner (goal); Claude Code (values)

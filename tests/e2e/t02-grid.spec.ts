@@ -19,8 +19,9 @@ async function layout(page: Page) {
 const cases = [
   { width: 320, columns: 1 },
   { width: 768, columns: 2 },
-  { width: 1280, columns: 3 },
-  { width: 1440, columns: 3 },
+  { width: 1024, columns: 3 },
+  { width: 1280, columns: 4 },
+  { width: 1440, columns: 4 },
 ];
 
 test.describe('T-02 FR-02 responsive grid', () => {
@@ -37,7 +38,15 @@ test.describe('T-02 FR-02 responsive grid', () => {
     });
   }
 
-  test('T-02 FR-02 optional 4-column setting applies at 1440 px but not at 1024 px', async ({ page }) => {
+  test('T-02 FR-02 D40 the 3-column setting keeps 3 columns at 1440 px', async ({ page }) => {
+    await seedPrefs(page, { version: 1, columns: 3 });
+    await withData(page);
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/');
+    expect((await layout(page)).columns).toBe(3);
+  });
+
+  test('T-02 FR-02 4-column setting applies at 1440 px but not at 1024 px', async ({ page }) => {
     await seedPrefs(page, { version: 1, columns: 4 });
     await withData(page);
     await page.setViewportSize({ width: 1440, height: 900 });

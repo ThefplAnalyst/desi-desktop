@@ -73,14 +73,15 @@ test.describe('T-04 FR-05 FR-06 customize', () => {
     const dialog = await openCustomize(page);
     await dialog.getByRole('switch', { name: 'Show Movies & OTT' }).check();
     await expect(dialog.getByRole('switch', { name: 'Show Movies & OTT' })).toBeFocused();
-    await dialog.getByRole('radio', { name: '4 columns on wide screens' }).check();
+    await expect(page.locator('#grid')).toHaveClass(/cols-4/); // D40 default
+    await dialog.getByRole('radio', { name: '3 columns' }).check();
     await page.reload();
     expect((await tileIds(page)).at(-1)).toBe('movies');
-    await expect(page.locator('#grid')).toHaveClass(/cols-4/);
+    await expect(page.locator('#grid')).not.toHaveClass(/cols-4/);
   });
 
   test('T-04 FR-05 Reset asks to confirm', async ({ page }) => {
-    await seedPrefs(page, { version: 1, tiles: ['cricket', 'visa'], metroId: 'austin', columns: 4 });
+    await seedPrefs(page, { version: 1, tiles: ['cricket', 'visa'], metroId: 'austin', columns: 3 });
     await page.goto('/');
     expect(await tileIds(page)).toEqual(['cricket', 'visa']);
     const dialog = await openCustomize(page);

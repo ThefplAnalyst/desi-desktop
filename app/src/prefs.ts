@@ -20,7 +20,7 @@ export function defaults(): Preferences {
     version: 1,
     tiles: [...DEFAULT_TILES],
     metroId: null,
-    columns: 3,
+    columns: 4,
     shortcuts: STARTER_SHORTCUTS.map((s, i) => ({ id: `s${i + 1}`, ...s })),
     tipDismissed: false,
   };
@@ -81,7 +81,7 @@ export function sanitize(raw: unknown): Preferences {
     version: 1,
     tiles: Array.isArray(raw['tiles']) ? tiles : d.tiles,
     metroId,
-    columns: raw['columns'] === 4 ? 4 : 3,
+    columns: raw['columns'] === 3 ? 3 : 4,
     shortcuts: Array.isArray(raw['shortcuts']) ? shortcuts : d.shortcuts,
     tipDismissed: raw['tipDismissed'] === true,
   };

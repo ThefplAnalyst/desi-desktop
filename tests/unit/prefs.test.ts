@@ -38,7 +38,7 @@ describe('T-06 FR-08 preferences', () => {
       'time-weather',
       'festivals',
     ]);
-    expect(d).toMatchObject({ version: 1, metroId: null, columns: 3, tipDismissed: false });
+    expect(d).toMatchObject({ version: 1, metroId: null, columns: 4, tipDismissed: false });
     expect(d.shortcuts).toHaveLength(5);
   });
 
@@ -76,7 +76,7 @@ describe('T-06 FR-08 preferences', () => {
   it('T-06 FR-08 save then load round-trips', () => {
     const s = new MemoryStorage();
     const store = createPrefsStore(() => s);
-    const p = { ...defaults(), tiles: ['cricket' as const, 'visa' as const], metroId: 'austin', columns: 4 as const, tipDismissed: true };
+    const p = { ...defaults(), tiles: ['cricket' as const, 'visa' as const], metroId: 'austin', columns: 3 as const, tipDismissed: true };
     expect(store.save(p)).toBe(true);
     expect(store.load()).toEqual(p);
   });
@@ -91,8 +91,9 @@ describe('T-06 FR-08 preferences', () => {
     expect(sanitize({ version: 1 }).tiles).toEqual(DEFAULT_TILES);
   });
 
-  it('T-06 FR-10 unknown metro becomes none; columns other than 4 become 3', () => {
-    expect(sanitize({ version: 1, metroId: 'atlantis', columns: 7 })).toMatchObject({ metroId: null, columns: 3 });
+  it('T-06 FR-10 D40 unknown metro becomes none; columns other than 3 become 4', () => {
+    expect(sanitize({ version: 1, metroId: 'atlantis', columns: 7 })).toMatchObject({ metroId: null, columns: 4 });
+    expect(sanitize({ version: 1, columns: 3 })).toMatchObject({ columns: 3 });
   });
 
   it('T-07 FR-09 stored shortcuts with non-http(s) URLs are dropped and the list is capped at 12', () => {

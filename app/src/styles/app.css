@@ -153,20 +153,20 @@ main {
 
 /* Hero: greeting, date, search pill. */
 .hero {
-  padding: 40px 0 24px;
+  padding: 20px 0 12px;
   text-align: center;
 }
 
 .greeting {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  min-height: 42px;
+  min-height: 36px;
 }
 
 .today {
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   color: var(--muted);
   min-height: 24px;
 }
@@ -247,12 +247,12 @@ main {
   align-items: center;
 }
 
-/* Grid: 1 / 2 / 3 columns, optional 4 at >= 1280 px (FR-02, D12). Row-major order. */
+/* Grid: 1 / 2 / 3 columns; 4 at >= 1280 px unless the visitor picks 3 (FR-02, D12, D40). Row-major order. */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 @media (min-width: 640px) {
@@ -289,7 +289,7 @@ main {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  padding: 16px 16px 8px;
+  padding: 10px 14px 6px;
   background: var(--card);
   border-radius: var(--radius);
   border: 1px solid var(--line);
@@ -299,7 +299,7 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 32px;
+  min-height: 28px;
 }
 
 .tile-icon {
@@ -371,7 +371,7 @@ main {
 }
 
 .tile-label {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -436,6 +436,30 @@ a.row-link:hover .row-title {
   font-size: 13px;
 }
 
+/* Compact rows with a mouse or trackpad (D40). Touch screens keep 44 px targets (NFR-A11Y);
+   32 px still clears WCAG 2.2 AA target size (24 px). */
+@media (pointer: fine) {
+  .row-link {
+    min-height: 32px;
+    padding: 4px 0;
+    line-height: 1.35;
+  }
+
+  .icon-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tile-hide {
+    margin: -4px -6px -4px 0;
+  }
+
+  .more,
+  .link-button {
+    min-height: 32px;
+  }
+}
+
 mark {
   background: var(--mark);
   color: inherit;
@@ -446,7 +470,7 @@ mark {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  margin: 8px 0;
+  margin: 4px 0;
 }
 
 .clock {
@@ -489,21 +513,21 @@ mark {
 
 .tile-foot {
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 6px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 13px;
 }
 
 .tile-foot p {
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .skeleton {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 12px 0 16px;
+  gap: 14px;
+  padding: 10px 0 12px;
 }
 
 .skeleton .bar {
