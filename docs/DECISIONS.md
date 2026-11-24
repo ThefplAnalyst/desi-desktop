@@ -249,3 +249,9 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: A text-only favicon letter (rejected: hard to read at 16 px). A traced or AI-generated image (rejected: an original vector is smaller and clearly ours).
 - Reason: Gives the site a recognisable tab and home-screen identity at about 17 KB total, with no third-party assets.
 - Decided by: Owner (request); Claude Code (design)
+
+## D44 — Divider between Google search and the tile filter (2026-11-24)
+- Context: The owner found the Google search box and the "Filter tiles" box too close together and asked for a horizontal line and a gap.
+- Decision: The tools area gets a 1 px hairline above it (`--line`) with 20 px of space below the line and 8 px above it. The filter box is 40 px tall, so it reads as secondary to the 56 px search pill. It stays 44 px wide or more as a tap target, because it is full width.
+- Reason: Two similar inputs stacked closely invite typing into the wrong one.
+- Decided by: Owner (request); Claude Code (values)
