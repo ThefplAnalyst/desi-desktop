@@ -8,7 +8,7 @@ import { filterDashboard, terms } from './filter.ts';
 import { LABELS, ago, isSourceStale, tileView } from './freshness.ts';
 import { nearMeLinks } from './nearme.ts';
 import { hostOf } from './prefs.ts';
-import { renderTile, type Row, type TileModel } from './tile.ts';
+import { renderTile, type FooterLine, type Row, type TileModel } from './tile.ts';
 
 export interface ModelInput {
   prefs: Preferences;
@@ -100,10 +100,15 @@ export function buildModels(input: ModelInput): TileModel[] {
       view.state === 'links'
         ? view.links.map((l, i) => ({ key: `row:${id}:link${i}`, title: l.title, url: l.url }))
         : view.items.map((i) => itemRow(id, i, attribution(i.sourceId), now));
-    const footer =
+    const footer: FooterLine[] =
       view.state === 'curated'
         ? ['Curated by Desi Desktop']
-        : view.sources.map((s) => `${attribution(s.id)} · ${s.stale ? LABELS.stale : s.updated ? `Updated ${ago(s.updated, now)}` : ''}`.replace(/ · $/, ''));
+        : view.sources.map((s) => {
+            const status = s.stale ? LABELS.stale : s.updated ? `Updated ${ago(s.updated, now)}` : '';
+            const credit = data.sources.get(s.id)?.credit;
+            if (credit) return { link: credit, rest: status ? ` · ${status}` : '' };
+            return `${attribution(s.id)} · ${status}`.replace(/ · $/, '');
+          });
     models.push({
       ...base,
       title: tile?.title ?? cat.title,

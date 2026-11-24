@@ -362,6 +362,53 @@
       "notes": "Owner approved 2026-11-23 (decision D36). Verified 2026-11-23: points lookups for all 20 metros; grid ids cached in config/metros.json. NWS asks for contact details in the User-Agent: set OWNER_CONTACT_EMAIL in M4."
     },
     {
+      "id": "bbc-cricket",
+      "publisher": "BBC Sport (British Broadcasting Corporation)",
+      "adapter": "rss",
+      "endpoint": "https://feeds.bbci.co.uk/sport/cricket/rss.xml",
+      "allowedHosts": [
+        "feeds.bbci.co.uk"
+      ],
+      "tiles": [
+        "cricket"
+      ],
+      "official": false,
+      "relevance": {
+        "include": [],
+        "exclude": []
+      },
+      "minIntervalMinutes": 30,
+      "maxItems": 20,
+      "maxRetentionHours": 168,
+      "attribution": "BBC Sport",
+      "credit": {
+        "text": "From BBC News, bbc.co.uk/news",
+        "url": "https://www.bbc.co.uk/news"
+      },
+      "enabled": true,
+      "rights": {
+        "status": "approved",
+        "basis": "BBC Terms of Use section 15 (For people): 'You can add the BBC News RSS feed to your website' provided the feed is not changed, BBC branding is not removed or added, and the BBC is credited as 'BBC News, bbc.co.uk/news' with text and hyperlink in a prominent place nearby. Headline, link and date only.",
+        "termsUrl": "https://www.bbc.co.uk/usingthebbc/terms-of-use/",
+        "commercialUse": false,
+        "allowedFields": [
+          "title",
+          "url",
+          "publishedAt"
+        ],
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-24",
+        "reviewDueAt": "2027-11-24"
+      },
+      "fallbackLinks": [
+        {
+          "title": "BBC Sport cricket",
+          "url": "https://www.bbc.co.uk/sport/cricket"
+        }
+      ],
+      "notes": "Owner approved 2026-11-24 (decision D43). Business use of BBC feeds needs BBC permission: re-review if the site ever carries ads or sponsorship."
+    },
+    {
       "id": "cricket-fixtures",
       "publisher": "Desi Desktop",
       "adapter": "curated",

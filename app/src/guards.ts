@@ -125,6 +125,9 @@ export function parseSources(raw: unknown): Map<string, PublicSource> {
       id: s['id'],
       publisher: isStr(s['publisher'], 120) ? s['publisher'] : s['attribution'],
       attribution: s['attribution'],
+      ...(isObj(s['credit']) && isStr(s['credit']['text'], 80) && isHttpsUrl(s['credit']['url'])
+        ? { credit: { text: s['credit']['text'], url: s['credit']['url'] } }
+        : {}),
       termsUrl: isHttpsUrl(s['termsUrl']) ? s['termsUrl'] : '',
       mode: MODES.includes(s['mode'] as TileMode) ? (s['mode'] as TileMode) : 'live',
     });

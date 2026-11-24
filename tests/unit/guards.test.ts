@@ -1,6 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { isHttpsUrl, parseBundle, parseHealth } from '../../app/src/guards.ts';
+import { isHttpsUrl, parseBundle, parseHealth, parseSources } from '../../app/src/guards.ts';
 
 const fixture = JSON.parse(readFileSync('tests/fixtures/content.sample.json', 'utf8')) as Record<string, unknown>;
 
@@ -54,5 +54,19 @@ describe('NFR-SEC browser data guards', () => {
       ],
     });
     expect([...h.keys()]).toEqual(['pib']);
+  });
+
+  it('NFR-SEC D43 a credit link is kept only when its text is short and its URL is https', () => {
+    const base = { id: 'x', attribution: 'X', termsUrl: 'https://example.org/t', mode: 'live' };
+    const m = parseSources({
+      sources: [
+        { ...base, id: 'ok', credit: { text: 'From X, example.org', url: 'https://example.org/' } },
+        { ...base, id: 'http', credit: { text: 'From X', url: 'http://example.org/' } },
+        { ...base, id: 'js', credit: { text: 'From X', url: 'javascript:alert(1)' } },
+        { ...base, id: 'long', credit: { text: 'x'.repeat(81), url: 'https://example.org/' } },
+      ],
+    });
+    expect(m.get('ok')?.credit).toEqual({ text: 'From X, example.org', url: 'https://example.org/' });
+    for (const id of ['http', 'js', 'long']) expect(m.get(id)?.credit).toBeUndefined();
   });
 });

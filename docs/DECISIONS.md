@@ -220,3 +220,14 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Deploy from both CI and refresh (rejected: two paths race and need two rollbacks). Commit health to git (rejected: noisy history every 30 minutes). Store previous content in the cache (rejected: spec 5.7).
 - Reason: Runs itself safely on free tiers (principle 5); every first deploy still waits for the owner.
 - Decided by: Claude Code
+
+## D43 — BBC Sport cricket headlines approved; Cricket tile goes live (2026-11-24)
+- Context: The owner asked for cricket news. Research (2026-11-24): ESPNcricinfo (Disney terms: personal use only), ICC and Cricket Australia (licence or written consent needed) say no; Wisden and the ECB are unclear; Wikinews is CC BY but has almost no cricket. The BBC Terms of Use, section 15 "Metadata and RSS feeds", For people, say: "You can add the BBC News RSS feed to your website or social media account. Provided: You don't change the RSS feed or remove any of our branding or logos; You credit us by saying it's from BBC News, bbc.co.uk/news or bbc.com/news putting the text and hyperlink in a prominent place nearby; You don't add our branding…". Business use needs BBC permission and may cost a fee. The owner read the terms and said "Approve BBC cricket".
+- Decision:
+  - Source `bbc-cricket` (`https://feeds.bbci.co.uk/sport/cricket/rss.xml`, every 30 minutes, headline, link and date only) is approved and enabled, with the review due 2027-11-24 and `commercialUse: false`.
+  - New optional `credit` field on sources and in public `sources.json`. The tile footer shows it as a link: "From BBC News, bbc.co.uk/news" → https://www.bbc.co.uk/news. The browser guard keeps it only when it is https and at most 80 characters.
+  - The Cricket tile's catalog mode changes from `curated` to `live`, because it now carries live headlines. Curated fixtures can still be added to it.
+  - The feed's own items are shown as-is: no summaries, no edits, no BBC logos added.
+- Alternatives: Guardian Open Platform (deferred: needs an owner API key, and its terms ask to keep embedded ads and tracking). Wait for permission from Cricinfo (no reply route yet).
+- Watch: if the site ever carries ads or sponsorship, this is "business use". Re-review and ask the BBC first. The feed is UK-centred, so a South Asia relevance filter can be added later if the owner wants one.
+- Decided by: Owner (approval); Claude Code (implementation)

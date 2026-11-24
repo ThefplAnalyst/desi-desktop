@@ -38,6 +38,8 @@ export const SourceSchema = z
     maxItems: z.number().int().min(1).max(20),
     maxRetentionHours: z.number().int().min(1).max(24 * 366),
     attribution: z.string().min(1).max(80),
+    /** Credit link shown in the tile footer when the publisher's terms require one (D43). */
+    credit: z.object({ text: z.string().min(1).max(80), url: HttpsUrl }).strict().optional(),
     enabled: z.boolean(),
     rights: RightsSchema,
     fallbackLinks: z.array(LinkSchema).max(20).default([]),

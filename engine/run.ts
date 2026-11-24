@@ -192,6 +192,7 @@ export async function runEngine(opts: RunOptions, deps: RunDeps): Promise<RunRes
           id: r.source.id,
           publisher: r.source.publisher,
           attribution: r.source.attribution,
+          ...(r.source.credit ? { credit: r.source.credit } : {}),
           termsUrl: r.source.rights.termsUrl ?? REPO_URL,
           mode: r.source.adapter === 'curated' ? ('curated' as const) : ('live' as const),
         })),
