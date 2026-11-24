@@ -220,3 +220,16 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Deploy from both CI and refresh (rejected: two paths race and need two rollbacks). Commit health to git (rejected: noisy history every 30 minutes). Store previous content in the cache (rejected: spec 5.7).
 - Reason: Runs itself safely on free tiers (principle 5); every first deploy still waits for the owner.
 - Decided by: Claude Code
+
+## D39 — India publisher feeds: terms reviewed, none usable without permission (2026-11-23)
+- Context: The owner asked whether India News can show headlines instead of links to newspapers. The publishers' sites block Claude Code's fetcher, so the owner read each RSS terms page in a browser and pasted the text.
+- Findings (quoted from each RSS page on 2026-11-23):
+  - **Times of India**: "TOI grants you permission to only access and make personal use of its RSS feeds … TIL forbids you from any attempts at displaying, hosting, aggregating … TIL's RSS feeds." No.
+  - **Indian Express**: lists "titles" as intellectual property, requires "payment of requisite syndication / license fees", and says "Consumption of content via these RSS feeds are strictly for personal and non-commercial use." No ($0 rule as well).
+  - **NDTV**: "provided free of charge for use by individuals for personal, non-commercial use", attribution "NDTV.com". A public website is not use by an individual. No without written permission. It is the most promising one to ask, because it already expects attribution.
+  - **The Hindu**: its RSS page refers to T&C that were not visible in the pasted text, and the footer says "All rights reserved". Unknown, so links only.
+  - **PIB**: answers our bot with 403 (D-series M3 note). **All India Radio (newsonair)**: the feed is reachable but has no feed terms, only "All rights reserved". Both need permission.
+- Decision: No India publisher feed is added to `config/sources.json`. India News stays links-only until a publisher grants written permission, recorded by the owner. The next step is permission emails (PIB, NDTV, The Hindu, All India Radio).
+- Alternatives: Treat NDTV's "may not … redistribute … without attribution" as permission (rejected: its grant of use is to individuals for personal use, and an ambiguity is resolved toward principle 1).
+- Reason: Rights first (principle 1). Showing headlines without permission is the risk the spec exists to avoid.
+- Decided by: Owner (terms read); Claude Code (assessment)
