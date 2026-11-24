@@ -416,9 +416,9 @@
       "maxItems": 20,
       "maxRetentionHours": 8784,
       "attribution": "Desi Desktop",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
+        "status": "approved",
         "basis": "Original content written for Desi Desktop",
         "termsUrl": null,
         "commercialUse": true,
@@ -427,11 +427,12 @@
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
-      "fallbackLinks": []
+      "fallbackLinks": [],
+      "notes": "Owner approved 2026-11-23 (decision D37)."
     },
     {
       "id": "cricketdata",

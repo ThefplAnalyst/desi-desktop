@@ -1,9 +1,9 @@
 {
   "review": {
-    "status": "unverified",
-    "verifiedBy": null,
-    "verifiedAt": null,
-    "notes": "Drafted by Claude Code on 2026-11-23 from general knowledge, NOT from an official calendar. Items marked estimated:true follow lunar or regional calendars and must be checked against an official source before verifying. US federal holiday dates follow the OPM rules (fixed date or Nth weekday)."
+    "status": "verified",
+    "verifiedBy": "owner",
+    "verifiedAt": "2026-11-23",
+    "notes": "Owner checked the 18 dates on 2026-11-23 (\"Festivals OK\", decision D37). Items marked estimated:true follow lunar or regional calendars and appear as \"(expected)\"."
   },
   "items": [
     {
