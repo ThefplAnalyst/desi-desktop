@@ -13,6 +13,7 @@
   --mark: #fff3b0;
   --danger: #c4001a;
   --radius: 18px;
+  --tile-h: 360px;
   --topbar-bg: rgba(245, 245, 247, 0.8);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -113,10 +114,18 @@ a {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
   color: var(--ink);
   font-weight: 600;
   font-size: 17px;
   text-decoration: none;
+}
+
+.logo {
+  flex: none;
 }
 
 .topbar-nav {
@@ -153,20 +162,20 @@ main {
 
 /* Hero: greeting, date, search pill. */
 .hero {
-  padding: 40px 0 24px;
+  padding: 20px 0 12px;
   text-align: center;
 }
 
 .greeting {
   margin: 0;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  min-height: 42px;
+  min-height: 36px;
 }
 
 .today {
-  margin: 0 0 24px;
+  margin: 0 0 12px;
   color: var(--muted);
   min-height: 24px;
 }
@@ -213,9 +222,12 @@ main {
 }
 
 /* Filter, tip and notes below search. */
+/* A hairline separates Google search from the tile filter, so the two boxes are not confused (D44). */
 .tools {
   max-width: 680px;
-  margin: 0 auto 8px;
+  margin: 8px auto 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
 }
 
 .filter {
@@ -247,12 +259,12 @@ main {
   align-items: center;
 }
 
-/* Grid: 1 / 2 / 3 columns, optional 4 at >= 1280 px (FR-02, D12). Row-major order. */
+/* Grid: 1 / 2 / 3 columns; 4 at >= 1280 px unless the visitor picks 3 (FR-02, D12, D40). Row-major order. */
 .grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 16px;
-  margin-top: 24px;
+  gap: 12px;
+  margin-top: 12px;
 }
 
 @media (min-width: 640px) {
@@ -277,6 +289,34 @@ main {
   }
 }
 
+/* Equal boxes (D41): from 640 px every tile is one fixed-height cell. app/src/fit.ts shows the rows
+   that fit and puts the rest behind Show more; an expanded or filtered tile grows by whole cells. */
+@media (pointer: coarse) {
+  :root {
+    --tile-h: 420px;
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-auto-rows: var(--tile-h);
+  }
+
+  .tile {
+    overflow: hidden;
+  }
+
+  .tile.tall {
+    grid-row: span 2;
+  }
+
+  .tile .rows {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
 .page-empty {
   grid-column: 1 / -1;
   padding: 48px 16px;
@@ -289,7 +329,7 @@ main {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  padding: 16px 16px 8px;
+  padding: 10px 14px 6px;
   background: var(--card);
   border-radius: var(--radius);
   border: 1px solid var(--line);
@@ -299,7 +339,7 @@ main {
   display: flex;
   align-items: center;
   gap: 8px;
-  min-height: 32px;
+  min-height: 28px;
 }
 
 .tile-icon {
@@ -371,7 +411,7 @@ main {
 }
 
 .tile-label {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
   color: var(--muted);
   font-size: 13px;
 }
@@ -415,11 +455,19 @@ a.row-link:hover .row-title {
 
 .row-title {
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .row-meta {
   color: var(--muted);
   font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .row-value {
@@ -436,6 +484,30 @@ a.row-link:hover .row-title {
   font-size: 13px;
 }
 
+/* Compact rows with a mouse or trackpad (D40). Touch screens keep 44 px targets (NFR-A11Y);
+   32 px still clears WCAG 2.2 AA target size (24 px). */
+@media (pointer: fine) {
+  .row-link {
+    min-height: 32px;
+    padding: 4px 0;
+    line-height: 1.35;
+  }
+
+  .icon-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tile-hide {
+    margin: -4px -6px -4px 0;
+  }
+
+  .tile .more,
+  .tile .link-button {
+    min-height: 32px;
+  }
+}
+
 mark {
   background: var(--mark);
   color: inherit;
@@ -446,7 +518,7 @@ mark {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  margin: 8px 0;
+  margin: 4px 0;
 }
 
 .clock {
@@ -489,21 +561,21 @@ mark {
 
 .tile-foot {
   margin-top: auto;
-  padding-top: 8px;
+  padding-top: 6px;
   border-top: 1px solid var(--line);
   color: var(--muted);
   font-size: 13px;
 }
 
 .tile-foot p {
-  margin: 0 0 6px;
+  margin: 0 0 4px;
 }
 
 .skeleton {
   display: flex;
   flex-direction: column;
-  gap: 18px;
-  padding: 12px 0 16px;
+  gap: 14px;
+  padding: 10px 0 12px;
 }
 
 .skeleton .bar {

@@ -76,7 +76,7 @@ export function renderTile(m: TileModel, o: TileRenderOptions): HTMLElement {
 
   const article = h(
     'article',
-    { class: `tile state-${m.state}`, 'data-tile': m.id, 'aria-labelledby': headingId, 'aria-busy': m.state === 'loading' ? 'true' : null },
+    { class: `tile state-${m.state}${o.expanded || shown.length > ROWS_DEFAULT ? ' tall' : ''}`, 'data-tile': m.id, 'aria-labelledby': headingId, 'aria-busy': m.state === 'loading' ? 'true' : null },
     h(
       'header',
       { class: 'tile-head' },
@@ -132,13 +132,16 @@ export function renderTile(m: TileModel, o: TileRenderOptions): HTMLElement {
     );
   }
 
-  if (canMore) {
+  // The button is always present with rows; when nothing more exists it starts hidden, and
+  // fitTiles (D41) reveals it if the box cannot show every row.
+  if (canMore || shown.length) {
     article.append(
       h(
         'button',
         {
           type: 'button',
           class: 'more',
+          hidden: canMore || o.expanded ? null : 'hidden',
           'aria-expanded': String(o.expanded),
           'data-key': `more:${m.id}`,
           onclick: () => o.onToggleMore(m.id),

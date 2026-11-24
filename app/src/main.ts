@@ -5,6 +5,7 @@ import { createCustomize } from './customize.ts';
 import { loadData, type SiteData } from './data.ts';
 import { announce, focusKey, preserveFocus } from './dom.ts';
 import { terms } from './filter.ts';
+import { fitOnResize, fitTiles } from './fit.ts';
 import { buildModels, renderGrid } from './grid.ts';
 import { createPrefsStore } from './prefs.ts';
 import { greeting, initSearch, todayText } from './search.ts';
@@ -67,6 +68,7 @@ function render(): void {
       onCustomize: () => customize.open(),
     });
   });
+  fitTiles(grid);
   const filtering = terms(query).length > 0;
   const statusText = filtering ? `${counts.items} ${counts.items === 1 ? 'item' : 'items'} in ${counts.tiles} ${counts.tiles === 1 ? 'tile' : 'tiles'}` : '';
   if (filterStatus.textContent !== statusText) filterStatus.textContent = statusText;
@@ -119,6 +121,7 @@ document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') render();
 });
 
+fitOnResize(grid);
 render();
 void loadData().then((d) => {
   data = d;

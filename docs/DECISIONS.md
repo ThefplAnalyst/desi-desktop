@@ -220,3 +220,38 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: Deploy from both CI and refresh (rejected: two paths race and need two rollbacks). Commit health to git (rejected: noisy history every 30 minutes). Store previous content in the cache (rejected: spec 5.7).
 - Reason: Runs itself safely on free tiers (principle 5); every first deploy still waits for the owner.
 - Decided by: Claude Code
+
+## D40 — 4 columns by default and compact tiles (2026-11-23)
+- Context: After viewing the site locally, the owner said too much space is wasted and asked for 4×N, compact cards and less space between items.
+- Decision:
+  - **4 columns by default at ≥ 1280 px** (`defaults().columns` is 4). Below 1280 px nothing changes (3 / 2 / 1). "3 columns" stays in Customize, and a saved 3 is kept. This overrides the D12 default ("default stays calm") and FR-02's "optional" wording.
+  - **Compact spacing.** The hero and grid gaps are smaller, tile padding is 10/14 px, and title, label and footer margins are tighter.
+  - **Rows are 32 px with a mouse or trackpad (`pointer: fine`)**, with 4 px vertical padding, and so are the hide (×) and "more" buttons. Touch screens keep 44 px targets. This narrows NFR-A11Y's 44 px rule to touch input. 32 px still passes WCAG 2.2 AA target size (2.5.8, 24 px minimum).
+  - Font sizes are unchanged (spec 6.6).
+- Alternatives: A separate "compact" setting (rejected: the owner wants it as the default). Shrinking rows on touch too (rejected: harder to tap on phones).
+- Reason: Shows more at a glance on desktop, the main use (a homepage tab), and keeps phones comfortable.
+- Decided by: Owner (goal); Claude Code (values)
+
+## D41 — Equal-size tiles; rows that do not fit go behind Show more (2026-11-23)
+- Context: The owner asked: "Let every box be same size. Where is data, let them have Show more."
+- Decision:
+  - **Equal cells.** From 640 px wide, every tile is one fixed-height grid cell (`--tile-h`): 360 px with a mouse or trackpad, 420 px on touch screens. Below 640 px (one column) tiles still size to their content.
+  - **Fit, then Show more.** `app/src/fit.ts` runs after each render and on resize. A collapsed tile shows as many of its first 5 rows as fit, and the rest go behind "Show more". FR-03's "5 visible rows" becomes "up to 5".
+  - **Expanded or filtered tiles grow by whole cells** until all their rows (up to 10, or all filter matches) fit, so the grid stays even.
+  - Headlines are clamped to 2 lines, and the source/age line to 1 line with an ellipsis. The full text stays in the link (screen readers and the filter use it), and the original article has the rest.
+- Alternatives: One height for every tile that is as tall as the fullest tile (tried at 464 px; rejected: most tiles were half empty). Scrolling inside tiles (rejected: scroll inside scroll, and hidden rows give no cue).
+- Reason: An even grid that is easy to scan, without hiding that more exists (principle 2, honest UI).
+- Decided by: Owner (goal); Claude Code (mechanism)
+
+## D42 — Logo, favicon and manifest (2026-11-24)
+- Context: The owner asked for a logo and a favicon.
+- Decision: An original mark: a lit diya (oil lamp) in white and amber on the accent-blue rounded square. It is drawn as inline SVG next to the wordmark on every page (`aria-hidden`; the link name stays "Desi Desktop"). The favicon is `favicon.svg`, plus a 32 px `favicon.ico` for older browsers. The site also gets the M5 home-screen pieces early: `icons/apple-touch-icon.png` (180), `icons/icon-192.png`, `icons/icon-512.png` and `manifest.webmanifest`. The PNGs were rendered once from the SVG and committed. Spec 6.6's "no images" applies to content tiles; these are site chrome served from 'self', which the CSP already allows.
+- Alternatives: A text-only favicon letter (rejected: hard to read at 16 px). A traced or AI-generated image (rejected: an original vector is smaller and clearly ours).
+- Reason: Gives the site a recognisable tab and home-screen identity at about 17 KB total, with no third-party assets.
+- Decided by: Owner (request); Claude Code (design)
+
+## D44 — Divider between Google search and the tile filter (2026-11-24)
+- Context: The owner found the Google search box and the "Filter tiles" box too close together and asked for a horizontal line and a gap.
+- Decision: The tools area gets a 1 px hairline above it (`--line`) with 20 px of space below the line and 8 px above it. The filter box keeps its 44 px height (NFR-A11Y touch targets). It already reads as secondary next to the 56 px search pill.
+- Reason: Two similar inputs stacked closely invite typing into the wrong one.
+- Decided by: Owner (request); Claude Code (values)
