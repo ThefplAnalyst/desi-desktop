@@ -1,0 +1,21 @@
+# Dependabot (spec 7.4): weekly npm and Actions updates. Dev-only patch updates auto-merge after green
+# CI (dependabot-automerge.yml); everything else waits for the owner.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    # Wait a week before proposing a new release (supply-chain safety).
+    cooldown:
+      default-days: 7
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    cooldown:
+      default-days: 7

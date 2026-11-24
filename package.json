@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && node scripts/check-budgets.ts",
+    "build:site": "vite build && node engine/ops.ts stage --bundle tmp/data --dist dist && node scripts/check-budgets.ts",
     "preview": "vite preview",
     "typecheck": "tsc -p tsconfig.json && tsc -p app/tsconfig.json",
     "lint": "eslint .",
@@ -19,7 +20,8 @@
     "sources:validate": "node engine/run.ts --validate-only",
     "content:dry-run": "node engine/run.ts --out tmp/data --preview-curated",
     "build:local:engine": "npm run content:dry-run && vite build --base /desidesktop/local/ --outDir ../local && node scripts/local-data.ts local tmp/data",
-    "content:probe": "node engine/run.ts --probe"
+    "content:probe": "node engine/run.ts --probe",
+    "smoke": "node engine/ops.ts smoke"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",
@@ -31,7 +33,8 @@
     "typescript": "6.0.3",
     "typescript-eslint": "8.74.0",
     "vite": "8.3.8",
-    "vitest": "5.1.1"
+    "vitest": "5.1.1",
+    "wrangler": "4.156.2"
   },
   "dependencies": {
     "fast-xml-parser": "5.12.1",

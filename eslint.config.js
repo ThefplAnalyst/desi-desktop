@@ -15,7 +15,7 @@ const htmlSinks = ['innerHTML', 'outerHTML', 'insertAdjacentHTML'].map((property
 }));
 
 export default defineConfig(
-  { ignores: ['dist/', 'local/', 'tmp/', 'coverage/', 'playwright-report/', 'test-results/', 'node_modules/'] },
+  { ignores: ['dist/', 'local/', 'tmp/', 'coverage/', 'playwright-report/', 'test-results/', 'node_modules/', '.wrangler/'] },
   js.configs.recommended,
   tseslint.configs.strict,
   {
@@ -52,6 +52,13 @@ export default defineConfig(
     languageOptions: { globals: globals.node },
     rules: {
       'no-restricted-imports': importBan(['app'], 'Engine code never imports from app/ (CLAUDE.md). Use shared/.'),
+    },
+  },
+  {
+    files: ['watchdog/**/*.ts'],
+    languageOptions: { globals: globals.serviceworker },
+    rules: {
+      'no-restricted-imports': importBan(['app', 'engine', 'shared'], 'The watchdog Worker is self-contained (D38).'),
     },
   },
   {

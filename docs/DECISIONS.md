@@ -204,3 +204,19 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: A paid holiday API (rejected: $0 rule; most do not cover India and Nepal). Monthly manual edits (rejected: the owner wants no routine chore).
 - Reason: Runs itself (principle 5) while staying honest: dates come from rules the owner verified once, and lunar dates are labelled as expected.
 - Decided by: Owner (goal, verification); Claude Code (approach)
+
+## D38 — M4 deploy and automation design (2026-11-23)
+- Context: M4 (spec 7.1) adds the site Worker, refresh.yml, change detection, heartbeat, rollback, alerts, the watchdog and Dependabot. Some spec details conflict with each other or with the free tiers.
+- Decision:
+  - **One deploy path.** Only `refresh.yml` deploys. On a green push to `main`, `ci.yml` dispatches `refresh.yml` instead of deploying itself (spec 7.4 said CI deploys). `decideDeploy` also deploys when `meta.commit` differs from the current commit ("code-changed"), so a merge reaches the site even if the dispatch is missed. Result: one concurrency group, one smoke test, one rollback.
+  - **Deploy switch.** `DEPLOY_TARGET` in `refresh.yml` is `none`, `staging` or `production`. It ships as `none`, and each first deploy needs the owner's approval (CLAUDE.md), after which Claude Code changes the line in a PR.
+  - **Engine health between runs.** The live `/data/health.json` changes only on deploy, so scheduling from it alone would fetch every source every 30 minutes (NWS alone about 960 calls a day instead of 160). Health is also saved to the Actions cache after good runs, and the newer of the two copies is used. Health holds timestamps and validators only, never publisher content, so spec 5.7 ("no collected content stored outside the deployed bundle") still holds.
+  - **Conditional requests only with rows in hand.** `If-None-Match` / `If-Modified-Since` are sent only when the previous bundle still has that source's rows, so a 304 can never empty a tile after a skipped or rolled-back deploy.
+  - **Rollback.** `wrangler rollback --yes` goes back to the previous version. The smoke test checks pages, the CSP header, the data schema, and that the bundle hash and commit match what was just deployed. It retries for about a minute to allow edge propagation. A deploy failure opens or updates `Deploy failed: <target>`, and the next good deploy closes it.
+  - **Alerts.** `Source failing: <id>` opens after 3 hours of failure, estimated from `lastSuccessAt`, the interval and the failure count (health has no "failing since" field, and the contract is unchanged), and closes on recovery. Issue text has ids, error codes and times only.
+  - **Watchdog** (`watchdog/`). It is self-contained (lint and a test forbid imports from app/, engine/ and shared/), has no workers.dev URL, and runs cron `23 * * * *`. `GH_REPO` is a plain variable; `GH_TOKEN` is a Worker secret that the owner sets. The spec also listed `SITE_URL`, which is dropped because it is unused.
+  - **Tooling.** `wrangler` 4.156.2 is a dev dependency (build-time only, nothing reaches visitors), and Wrangler telemetry is off in CI. Dependabot runs weekly with a 7-day cooldown. Auto-merge covers only patch updates of dev dependencies and needs the "Allow auto-merge" repository setting (an owner step).
+  - **Deferred.** The monthly "Curated content check" Issue (spec 7.5) is replaced by the self-maintaining festival rules (D37), which will alert only when a rule needs attention. It will be built with those rules.
+- Alternatives: Deploy from both CI and refresh (rejected: two paths race and need two rollbacks). Commit health to git (rejected: noisy history every 30 minutes). Store previous content in the cache (rejected: spec 5.7).
+- Reason: Runs itself safely on free tiers (principle 5); every first deploy still waits for the owner.
+- Decided by: Claude Code
