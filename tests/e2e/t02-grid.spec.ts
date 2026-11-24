@@ -56,6 +56,44 @@ test.describe('T-02 FR-02 responsive grid', () => {
     expect((await layout(page)).columns).toBe(3);
   });
 
+  test('T-02 FR-02 FR-03 D41 every tile is the same height; overflow goes behind Show more', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await withData(page);
+    await page.goto('/');
+    await expect(page.locator('#grid article .rows').first()).toBeVisible();
+    const tiles = await page.$$eval('#grid article', (els) =>
+      els.map((e) => ({
+        h: Math.round(e.getBoundingClientRect().height),
+        overflow: e.scrollHeight - e.clientHeight,
+        hiddenRows: e.querySelectorAll('.row[hidden]').length,
+        more: !!e.querySelector('.more:not([hidden])'),
+      })),
+    );
+    expect(new Set(tiles.map((t) => t.h)).size).toBe(1);
+    for (const t of tiles) {
+      expect(t.overflow).toBeLessThanOrEqual(1);
+      if (t.hiddenRows > 0) expect(t.more).toBe(true);
+    }
+  });
+
+  test('T-02 FR-03 D41 Show more grows a tile by whole cells and shows every row', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await withData(page);
+    await page.goto('/');
+    const id = await page.locator('#grid article', { has: page.getByRole('button', { name: 'Show more' }) }).first().getAttribute('data-tile');
+    const grown = page.locator(`#grid article[data-tile="${id}"]`);
+    const cell = await page.locator('#grid article').first().evaluate((e) => e.getBoundingClientRect().height);
+    await grown.getByRole('button', { name: 'Show more' }).click();
+    await expect(grown.getByRole('button', { name: 'Show less' })).toBeVisible();
+    const r = await grown.evaluate((e) => ({ h: e.getBoundingClientRect().height, hidden: e.querySelectorAll('.row[hidden]').length, overflow: e.scrollHeight - e.clientHeight }));
+    expect(r.hidden).toBe(0);
+    expect(r.overflow).toBeLessThanOrEqual(1);
+    const gap = 12;
+    const cells = (r.h + gap) / (cell + gap);
+    expect(Math.abs(cells - Math.round(cells))).toBeLessThan(0.05);
+    expect(Math.round(cells)).toBeGreaterThanOrEqual(2);
+  });
+
   test.describe('200% zoom', () => {
     // A 1280 px window at 200% zoom lays out like 640 CSS px at device scale 2.
     test.use({ viewport: { width: 640, height: 800 }, deviceScaleFactor: 2 });

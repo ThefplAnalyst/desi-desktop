@@ -231,3 +231,14 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: A separate "compact" setting (rejected: the owner wants it as the default). Shrinking rows on touch too (rejected: harder to tap on phones).
 - Reason: Shows more at a glance on desktop, the main use (a homepage tab), and keeps phones comfortable.
 - Decided by: Owner (goal); Claude Code (values)
+
+## D41 — Equal-size tiles; rows that do not fit go behind Show more (2026-11-23)
+- Context: The owner asked: "Let every box be same size. Where is data, let them have Show more."
+- Decision:
+  - **Equal cells.** From 640 px wide, every tile is one fixed-height grid cell (`--tile-h`): 360 px with a mouse or trackpad, 420 px on touch screens. Below 640 px (one column) tiles still size to their content.
+  - **Fit, then Show more.** `app/src/fit.ts` runs after each render and on resize. A collapsed tile shows as many of its first 5 rows as fit, and the rest go behind "Show more". FR-03's "5 visible rows" becomes "up to 5".
+  - **Expanded or filtered tiles grow by whole cells** until all their rows (up to 10, or all filter matches) fit, so the grid stays even.
+  - Headlines are clamped to 2 lines, and the source/age line to 1 line with an ellipsis. The full text stays in the link (screen readers and the filter use it), and the original article has the rest.
+- Alternatives: One height for every tile that is as tall as the fullest tile (tried at 464 px; rejected: most tiles were half empty). Scrolling inside tiles (rejected: scroll inside scroll, and hidden rows give no cue).
+- Reason: An even grid that is easy to scan, without hiding that more exists (principle 2, honest UI).
+- Decided by: Owner (goal); Claude Code (mechanism)

@@ -13,6 +13,7 @@
   --mark: #fff3b0;
   --danger: #c4001a;
   --radius: 18px;
+  --tile-h: 360px;
   --topbar-bg: rgba(245, 245, 247, 0.8);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -277,6 +278,34 @@ main {
   }
 }
 
+/* Equal boxes (D41): from 640 px every tile is one fixed-height cell. app/src/fit.ts shows the rows
+   that fit and puts the rest behind Show more; an expanded or filtered tile grows by whole cells. */
+@media (pointer: coarse) {
+  :root {
+    --tile-h: 420px;
+  }
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-auto-rows: var(--tile-h);
+  }
+
+  .tile {
+    overflow: hidden;
+  }
+
+  .tile.tall {
+    grid-row: span 2;
+  }
+
+  .tile .rows {
+    flex: 0 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+  }
+}
+
 .page-empty {
   grid-column: 1 / -1;
   padding: 48px 16px;
@@ -415,11 +444,19 @@ a.row-link:hover .row-title {
 
 .row-title {
   overflow-wrap: anywhere;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .row-meta {
   color: var(--muted);
   font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .row-value {
@@ -454,8 +491,8 @@ a.row-link:hover .row-title {
     margin: -4px -6px -4px 0;
   }
 
-  .more,
-  .link-button {
+  .tile .more,
+  .tile .link-button {
     min-height: 32px;
   }
 }
