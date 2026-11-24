@@ -64,20 +64,20 @@
       "maxItems": 20,
       "maxRetentionHours": 168,
       "attribution": "Federal Register",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "US government work (public domain)",
+        "status": "approved",
+        "basis": "US federal government work, public domain (17 U.S.C. 105). Headline, link and date only, with the agency credited.",
         "termsUrl": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api",
-        "commercialUse": null,
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [
         {
@@ -85,7 +85,7 @@
           "url": "https://www.federalregister.gov/"
         }
       ],
-      "notes": "Verified 2026-11-23: endpoint answers JSON with title, html_url, publication_date, document_number.",
+      "notes": "Owner approved 2026-11-23 (decision D36). Verified 2026-11-23: endpoint answers JSON with title, html_url, publication_date, document_number.",
       "params": {
         "agencies": [
           "u-s-citizenship-and-immigration-services",
@@ -116,23 +116,23 @@
       "maxItems": 20,
       "maxRetentionHours": 168,
       "attribution": "Federal Register",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "US government work (public domain)",
+        "status": "approved",
+        "basis": "US federal government work, public domain (17 U.S.C. 105). Headline, link and date only, with the agency credited.",
         "termsUrl": "https://www.federalregister.gov/reader-aids/developer-resources/rest-api",
-        "commercialUse": null,
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [],
-      "notes": "USCIS documents in the Federal Register, for the Visa tile (every USCIS document concerns immigration, so no keyword filter; a keyword filter on USCIS+State+DHS kept 0 of 20 on 2026-11-23). Decision D34.",
+      "notes": "Owner approved 2026-11-23 (decision D36). USCIS documents in the Federal Register, for the Visa tile (every USCIS document concerns immigration, so no keyword filter; a keyword filter on USCIS+State+DHS kept 0 of 20 on 2026-11-23). Decision D34.",
       "params": {
         "agencies": [
           "u-s-citizenship-and-immigration-services"
@@ -168,20 +168,20 @@
       "maxItems": 20,
       "maxRetentionHours": 168,
       "attribution": "USCIS",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "US government work (public domain)",
+        "status": "approved",
+        "basis": "US federal government work, public domain (17 U.S.C. 105). Headline, link and date only, with the agency credited.",
         "termsUrl": "https://www.uscis.gov/website-policies",
-        "commercialUse": null,
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [
         {
@@ -189,7 +189,7 @@
           "url": "https://www.uscis.gov/newsroom"
         }
       ],
-      "notes": "Verified 2026-11-23: RSS 2.0, 250 items, pubDate with 2-digit years (handled)."
+      "notes": "Owner approved 2026-11-23 (decision D36). Verified 2026-11-23: RSS 2.0, 250 items, pubDate with 2-digit years (handled)."
     },
     {
       "id": "visa-bulletin",
@@ -211,19 +211,19 @@
       "maxItems": 2,
       "maxRetentionHours": 1440,
       "attribution": "State Department",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "US government work (public domain); links only",
+        "status": "approved",
+        "basis": "US federal government work, public domain (17 U.S.C. 105). Headline, link and date only, with the agency credited.",
         "termsUrl": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html",
-        "commercialUse": null,
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [
         {
@@ -231,7 +231,7 @@
           "url": "https://travel.state.gov/content/travel/en/legal/visa-law0/visa-bulletin.html"
         }
       ],
-      "notes": "No network: travel.state.gov answers automated requests with 403 (2026-11-23). The adapter builds the current month's link from the URL pattern; owner: click it once to confirm."
+      "notes": "Owner approved 2026-11-23 (decision D36). No network: travel.state.gov answers automated requests with 403 (2026-11-23). The adapter builds the current month's link from the URL pattern; owner: click it once to confirm. Owner opened the built link for November 2026 on 2026-11-23: the fiscal-year folder pattern works."
     },
     {
       "id": "frankfurter",
@@ -343,23 +343,23 @@
       "maxItems": 14,
       "maxRetentionHours": 24,
       "attribution": "National Weather Service",
-      "enabled": false,
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "US government open data (public domain)",
+        "status": "approved",
+        "basis": "US federal government work, public domain (17 U.S.C. 105). Headline, link and date only, with the agency credited.",
         "termsUrl": "https://www.weather.gov/disclaimer",
-        "commercialUse": null,
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [],
-      "notes": "Verified 2026-11-23: points lookups for all 20 metros; grid ids cached in config/metros.json. NWS asks for contact details in the User-Agent: set OWNER_CONTACT_EMAIL in M4."
+      "notes": "Owner approved 2026-11-23 (decision D36). Verified 2026-11-23: points lookups for all 20 metros; grid ids cached in config/metros.json. NWS asks for contact details in the User-Agent: set OWNER_CONTACT_EMAIL in M4."
     },
     {
       "id": "cricket-fixtures",

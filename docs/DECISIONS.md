@@ -184,3 +184,10 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Reason: Rights-first. ECB terms allow free reuse with citation. Frankfurter allows commercial use with no key and no quotas. commercialUse is recorded as true: Frankfurter says so explicitly, and the ECB grants "free use", with conditions that cover even sold documents.
 - Follow-up: v1 is deprecated in favour of v2 but "will continue to work". Move to `/v2/providers/ecb/rates` later.
 - Decided by: Owner (approval); Claude Code (terms summary, config)
+
+## D36 — US government sources approved (2026-11-23)
+- Context: Launch sources in spec 5.6 need a one-time recorded review, even official ones (spec 5.1).
+- Decision: The owner approved and enabled `federal-register`, `federal-register-immigration`, `uscis-news`, `visa-bulletin` and `nws`. Basis: US federal government work, public domain (17 U.S.C. 105); headline, link and date only, with the agency credited. reviewedAt 2026-11-23, reviewDueAt 2027-11-23. The owner opened the Visa Bulletin link built for November 2026, which confirms the fiscal-year folder pattern (D34). No bulletin text is stored.
+- Alternatives: Keep them on links until a later review (rejected: they are the rights-cleanest sources available).
+- Reason: Official, public-domain sources give the Visa, US Updates and Time & Weather tiles real content at launch.
+- Decided by: Owner
