@@ -25,8 +25,11 @@ export interface TileModel {
   rows: Row[];
   clocks?: Clock[];
   message?: { text: string; customize?: boolean };
-  footer: string[];
+  footer: FooterLine[];
 }
+
+/** A footer line: plain text, or a publisher's required credit link followed by text (D43). */
+export type FooterLine = string | { link: { text: string; url: string }; rest: string };
 
 export interface TileRenderOptions {
   rows: Row[]; // rows to consider (already filtered when a filter is active)
@@ -149,7 +152,15 @@ export function renderTile(m: TileModel, o: TileRenderOptions): HTMLElement {
   }
 
   if (m.footer.length) {
-    article.append(h('footer', { class: 'tile-foot' }, ...m.footer.map((f) => h('p', {}, f))));
+    article.append(
+      h(
+        'footer',
+        { class: 'tile-foot' },
+        ...m.footer.map((f) =>
+          typeof f === 'string' ? h('p', {}, f) : h('p', {}, h('a', { href: f.link.url, rel: 'noopener noreferrer' }, f.link.text), f.rest),
+        ),
+      ),
+    );
   }
   return article;
 }

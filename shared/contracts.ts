@@ -76,6 +76,8 @@ export interface PublicSource {
   id: string;
   publisher: string;
   attribution: string;
+  /** Credit link some publishers require next to their headlines (D43), e.g. BBC News. */
+  credit?: { text: string; url: string };
   termsUrl: string;
   mode: TileMode;
 }
@@ -196,7 +198,14 @@ export const SourceHealthSchema = z
 export const HealthFileSchema = z.object({ generatedAt: isoUtc, sources: z.array(SourceHealthSchema) }).strict();
 
 export const PublicSourceSchema = z
-  .object({ id: z.string().min(1).max(64), publisher: z.string().min(1).max(120), attribution: z.string().min(1).max(80), termsUrl: HttpsUrl, mode: TileModeSchema })
+  .object({
+    id: z.string().min(1).max(64),
+    publisher: z.string().min(1).max(120),
+    attribution: z.string().min(1).max(80),
+    credit: z.object({ text: z.string().min(1).max(80), url: HttpsUrl }).strict().optional(),
+    termsUrl: HttpsUrl,
+    mode: TileModeSchema,
+  })
   .strict();
 export const SourcesFileSchema = z.object({ generatedAt: isoUtc, sources: z.array(PublicSourceSchema) }).strict();
 
