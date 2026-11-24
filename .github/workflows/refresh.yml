@@ -93,7 +93,8 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           ENV_FLAG: ${{ steps.target.outputs.env }}
           REASON: ${{ steps.decide.outputs.reason }}
-        run: npx wrangler deploy $ENV_FLAG --message "refresh: $REASON (${GITHUB_SHA::12})"
+        run: |
+          npx wrangler deploy $ENV_FLAG --message "refresh: $REASON (${GITHUB_SHA::12})"
 
       - name: Smoke test
         id: smoke
