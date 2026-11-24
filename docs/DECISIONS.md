@@ -242,3 +242,10 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
 - Alternatives: One height for every tile that is as tall as the fullest tile (tried at 464 px; rejected: most tiles were half empty). Scrolling inside tiles (rejected: scroll inside scroll, and hidden rows give no cue).
 - Reason: An even grid that is easy to scan, without hiding that more exists (principle 2, honest UI).
 - Decided by: Owner (goal); Claude Code (mechanism)
+
+## D42 — Logo, favicon and manifest (2026-11-24)
+- Context: The owner asked for a logo and a favicon.
+- Decision: An original mark: a lit diya (oil lamp) in white and amber on the accent-blue rounded square. It is drawn as inline SVG next to the wordmark on every page (`aria-hidden`; the link name stays "Desi Desktop"). The favicon is `favicon.svg`, plus a 32 px `favicon.ico` for older browsers. The site also gets the M5 home-screen pieces early: `icons/apple-touch-icon.png` (180), `icons/icon-192.png`, `icons/icon-512.png` and `manifest.webmanifest`. The PNGs were rendered once from the SVG and committed. Spec 6.6's "no images" applies to content tiles; these are site chrome served from 'self', which the CSP already allows.
+- Alternatives: A text-only favicon letter (rejected: hard to read at 16 px). A traced or AI-generated image (rejected: an original vector is smaller and clearly ours).
+- Reason: Gives the site a recognisable tab and home-screen identity at about 17 KB total, with no third-party assets.
+- Decided by: Owner (request); Claude Code (design)

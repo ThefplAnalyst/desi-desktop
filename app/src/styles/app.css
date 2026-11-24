@@ -114,10 +114,18 @@ a {
 }
 
 .wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
   color: var(--ink);
   font-weight: 600;
   font-size: 17px;
   text-decoration: none;
+}
+
+.logo {
+  flex: none;
 }
 
 .topbar-nav {
