@@ -1,0 +1,15 @@
+// Watchdog Worker (spec 6.8). Cron only: no routes and no workers.dev URL, so nothing can call it.
+// Secrets (set by the owner in Cloudflare, never in GitHub): GH_TOKEN. GH_REPO is a plain variable.
+//   npx wrangler deploy -c watchdog/wrangler.jsonc
+//   npx wrangler secret put GH_TOKEN -c watchdog/wrangler.jsonc
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "desi-desktop-watchdog",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-11-01",
+  "workers_dev": false,
+  "preview_urls": false,
+  "triggers": { "crons": ["23 * * * *"] },
+  "vars": { "GH_REPO": "ThefplAnalyst/desi-desktop" },
+  "observability": { "enabled": true }
+}

@@ -1,0 +1,144 @@
+# Refresh (spec 5.3, 5.4, 7.4, 7.5). The only workflow that deploys the site (decision D38).
+# Engine run -> change check -> build -> deploy -> smoke test -> rollback on failure -> Issue alerts.
+name: Refresh
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Fetch every approved source now and deploy even if nothing changed (rights are still enforced)'
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+env:
+  # Deploy switch (D38). The owner approves each first deploy; Claude Code then changes this line in a PR.
+  #   none       -> engine runs and alerts, nothing is deployed
+  #   staging    -> https://desi-desktop-staging.manojperumalil.workers.dev
+  #   production -> https://desi-desktop.manojperumalil.workers.dev
+  DEPLOY_TARGET: none
+  WRANGLER_SEND_METRICS: 'false'
+
+jobs:
+  refresh:
+    name: Refresh and publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+
+      - name: Choose target
+        id: target
+        run: |
+          case "$DEPLOY_TARGET" in
+            staging)    echo "url=https://desi-desktop-staging.manojperumalil.workers.dev" >> "$GITHUB_OUTPUT"; echo "env=--env staging" >> "$GITHUB_OUTPUT" ;;
+            production) echo "url=https://desi-desktop.manojperumalil.workers.dev" >> "$GITHUB_OUTPUT"; echo "env=" >> "$GITHUB_OUTPUT" ;;
+            none)       echo "url=" >> "$GITHUB_OUTPUT" ;;
+            *)          echo "Unknown DEPLOY_TARGET '$DEPLOY_TARGET'"; exit 1 ;;
+          esac
+
+      # Per-source health (timestamps and validators only, never publisher content) survives runs that
+      # do not deploy, so intervals are respected (D38).
+      - name: Restore engine health
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: tmp/state
+          key: engine-health-${{ github.run_id }}
+          restore-keys: engine-health-
+
+      - name: Load previous state
+        env:
+          SITE: ${{ steps.target.outputs.url }}
+        run: node engine/ops.ts previous ${SITE:+--site "$SITE"} --cache tmp/state/health.json --out tmp/previous
+
+      - name: Run engine
+        env:
+          SITE_URL: ${{ steps.target.outputs.url }}
+          OWNER_CONTACT_EMAIL: ${{ secrets.OWNER_CONTACT_EMAIL }}
+          FORCE: ${{ inputs.force && '--force' || '' }}
+        run: node engine/run.ts --previous tmp/previous --out tmp/data $FORCE
+
+      - name: Decide
+        id: decide
+        env:
+          FORCE: ${{ inputs.force && '--force' || '' }}
+        run: node engine/ops.ts decide --bundle tmp/data --previous tmp/previous $FORCE
+
+      - name: Build site with data
+        if: steps.target.outputs.url != '' && steps.decide.outputs.deploy == 'true'
+        run: npm run build:site
+
+      - name: Deploy
+        id: deploy
+        if: steps.target.outputs.url != '' && steps.decide.outputs.deploy == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ENV_FLAG: ${{ steps.target.outputs.env }}
+          REASON: ${{ steps.decide.outputs.reason }}
+        run: |
+          npx wrangler deploy $ENV_FLAG --message "refresh: $REASON (${GITHUB_SHA::12})"
+
+      - name: Smoke test
+        id: smoke
+        if: steps.deploy.outcome == 'success'
+        env:
+          SITE: ${{ steps.target.outputs.url }}
+        run: node engine/ops.ts smoke --url "$SITE" --bundle tmp/data --report tmp/smoke.txt
+
+      - name: Roll back
+        id: rollback
+        if: failure() && steps.deploy.outcome == 'success'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          ENV_FLAG: ${{ steps.target.outputs.env }}
+        run: npx wrangler rollback $ENV_FLAG --message "smoke test failed (${GITHUB_SHA::12})" --yes
+
+      - name: Report deploy failure
+        if: failure() && steps.deploy.outcome != 'skipped'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ROLLED_BACK: ${{ steps.rollback.outcome == 'success' && '--rolled-back' || '' }}
+        run: node engine/ops.ts deploy-alert --target "$DEPLOY_TARGET" --result failed --report tmp/smoke.txt $ROLLED_BACK
+
+      - name: Report deploy success
+        if: steps.smoke.outcome == 'success'
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node engine/ops.ts deploy-alert --target "$DEPLOY_TARGET" --result ok
+
+      # Keep health only when what is live matches this bundle (deployed now, unchanged, or no deploys yet).
+      - name: Keep engine health
+        if: success()
+        run: mkdir -p tmp/state && cp tmp/data/health.json tmp/state/health.json
+      - name: Save engine health
+        if: success()
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: tmp/state
+          key: engine-health-${{ github.run_id }}
+
+      - name: Source alerts
+        if: always() && steps.decide.outcome == 'success'
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node engine/ops.ts alerts --bundle tmp/data

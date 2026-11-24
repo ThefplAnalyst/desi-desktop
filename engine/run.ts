@@ -134,6 +134,10 @@ export async function runEngine(opts: RunOptions, deps: RunDeps): Promise<RunRes
       return { source, publishable: true, rows: { kind: 'previous' }, outcome, health: nextHealth(source, prevHealth, outcome, now) };
     }
     const adapter = adapters[source.adapter];
+    // A 304 reuses previous rows, so conditional headers are sent only when those rows exist
+    // (health can outlive the published bundle, e.g. after a skipped or rolled-back deploy; D38).
+    const hasPrevious = (previousRows.get(source.id)?.length ?? 0) > 0 || (source.adapter === 'nws' && Object.keys(previous.content?.weather ?? {}).length > 0);
+    const conditional = prevHealth && !hasPrevious ? { ...prevHealth, etag: null, lastModified: null } : prevHealth;
     let result: AdapterResult;
     if (!adapter) {
       result = { kind: 'error', code: 'adapter-not-built' };
@@ -144,7 +148,7 @@ export async function runEngine(opts: RunOptions, deps: RunDeps): Promise<RunRes
           now,
           root: opts.root,
           http: deps.http,
-          previous: prevHealth,
+          previous: conditional,
           allowUnverified: !!opts.previewCurated,
           metros: config.metros.metros,
         });

@@ -41,4 +41,8 @@ describe('CLAUDE.md module boundaries', () => {
   it('CLAUDE.md boundary: shared/ imports neither app/ nor engine/', () => {
     expect([...importsInto('shared', 'app'), ...importsInto('shared', 'engine')]).toEqual([]);
   });
+
+  it('D38 boundary: the watchdog Worker is self-contained (no app/, engine/ or shared/ code)', () => {
+    expect([...importsInto('watchdog', 'app'), ...importsInto('watchdog', 'engine'), ...importsInto('watchdog', 'shared')]).toEqual([]);
+  });
 });

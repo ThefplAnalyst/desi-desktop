@@ -22,5 +22,5 @@
     "skipLibCheck": true,
     "types": ["node"]
   },
-  "include": ["engine", "shared", "tests", "scripts", "*.config.ts"]
+  "include": ["engine", "shared", "tests", "scripts", "watchdog/src", "*.config.ts"]
 }
