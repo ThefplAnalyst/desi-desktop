@@ -252,31 +252,27 @@
       "minIntervalMinutes": 360,
       "maxItems": 5,
       "maxRetentionHours": 72,
-      "attribution": "Frankfurter",
-      "enabled": false,
+      "attribution": "Rates: European Central Bank, via Frankfurter. For information only.",
+      "enabled": true,
       "rights": {
-        "status": "draft",
-        "basis": "Free public API of central-bank reference rates",
-        "termsUrl": "https://frankfurter.dev/",
-        "commercialUse": null,
+        "status": "approved",
+        "basis": "ECB euro reference rates: free use if shown accurately with the ECB cited as source (ecb.europa.eu/services/disclaimer). Frankfurter: no key, no quotas, commercial use allowed, attribution appreciated (frankfurter.dev, frankfurter.dev/license).",
+        "termsUrl": "https://www.ecb.europa.eu/services/disclaimer/html/index.en.html",
+        "commercialUse": true,
         "allowedFields": [
           "title",
           "url",
           "publishedAt"
         ],
-        "reviewedBy": null,
-        "reviewedAt": null,
-        "reviewDueAt": null
+        "reviewedBy": "owner",
+        "reviewedAt": "2026-11-23",
+        "reviewDueAt": "2027-11-23"
       },
       "fallbackLinks": [],
-      "notes": "Verified 2026-11-23: v1 works (v2 does not exist). Central-bank (ECB) reference rates cover INR only of our five currencies. Approve this OR exchangerate-api, not both, or INR appears twice.",
+      "notes": "Owner approved 2026-11-23 (decision D35). v1 serves ECB data only; v1 is deprecated in favour of v2 but 'will continue to work' — move to /v2/providers/ecb/rates later. ECB covers INR only of our five currencies. Do not also enable exchangerate-api or INR appears twice.",
       "params": {
         "symbols": [
-          "INR",
-          "PKR",
-          "BDT",
-          "NPR",
-          "LKR"
+          "INR"
         ]
       }
     },

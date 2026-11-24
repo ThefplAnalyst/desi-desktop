@@ -13,12 +13,20 @@ describe('T-09 ENG-02 ENG-09 registry and rights gate', () => {
     expect(c.links.length).toBe(9);
   });
 
-  it('T-09 ENG-09 every source in the repository starts disabled and unapproved (owner approves)', () => {
+  it('T-09 ENG-09 every enabled or approved source in the repository carries an owner review that is still current', () => {
     const c = loadConfig('.');
     for (const s of c.registry) {
-      expect(s.enabled, s.id).toBe(false);
-      expect(s.rights.status, s.id).not.toBe('approved');
+      if (!s.enabled && s.rights.status !== 'approved') continue;
+      expect(s.rights.status, s.id).toBe('approved');
+      expect(s.rights.reviewedBy, s.id).toBe('owner');
+      expect(s.rights.reviewedAt, s.id).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+      expect(String(s.rights.reviewDueAt) > String(s.rights.reviewedAt), s.id).toBe(true);
     }
+  });
+
+  it('D35 only one currency provider is enabled, so INR never appears twice', () => {
+    const fx = loadConfig('.').registry.filter((s) => s.adapter === 'fx' && s.enabled);
+    expect(fx.length).toBeLessThanOrEqual(1);
   });
 
   it('T-09 ENG-09 registry rejects enabled unapproved sources', () => {

@@ -176,3 +176,11 @@ Inputs: Spec A (30-min refresh, 9 tiles, vanilla JS), Spec B (rights-first, Type
   - CricketData adapter built and tested; registered as draft and off (D21); not probed (needs a key).
 - Reason: Honest identification and rights-first publishing, with each tile still useful at launch.
 - Decided by: Claude Code
+
+## D35 — Currency source: Frankfurter (ECB) approved; ExchangeRate-API held (2026-11-23)
+- Context: The owner must choose one currency provider (D34). The owner first picked ExchangeRate-API and read its terms. Those terms allow commercial use but say "this license does not permit re-distribution of our data … not in any product or service that offers programmatic or automatic access to exchange rate data". The site publishes its rates in a public `/data/content.json`, so this needs written guidance first.
+- Decision: Approve and enable `frankfurter` (ECB euro reference rates via api.frankfurter.dev/v1, INR only). Review recorded by the owner: reviewedAt 2026-11-23, reviewDueAt 2027-11-23. Attribution reads "Rates: European Central Bank, via Frankfurter. For information only." This meets the ECB's condition that rates "appear accurately and the ECB must be cited as the source", and its note that the rates are "for information purposes only". `exchangerate-api` stays draft and disabled. The owner may email support@exchangerate-api.com for written permission. If it is granted, switch to it for all five currencies and disable Frankfurter.
+- Alternatives: Approve ExchangeRate-API anyway (rejected: redistribution clause). Use links only (rejected: ECB data is clean and covers the largest audience currency).
+- Reason: Rights-first. ECB terms allow free reuse with citation. Frankfurter allows commercial use with no key and no quotas. commercialUse is recorded as true: Frankfurter says so explicitly, and the ECB grants "free use", with conditions that cover even sold documents.
+- Follow-up: v1 is deprecated in favour of v2 but "will continue to work". Move to `/v2/providers/ecb/rates` later.
+- Decided by: Owner (approval); Claude Code (terms summary, config)
