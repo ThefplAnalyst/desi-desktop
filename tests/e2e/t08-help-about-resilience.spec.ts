@@ -35,8 +35,10 @@ test.describe('T-08 FR-11 FR-13 FR-14', () => {
     await page.goto('/');
     await page.getByRole('contentinfo').getByRole('link', { name: 'About & Sources' }).click();
     await expect(page.getByRole('heading', { level: 2, name: 'Sources' })).toBeVisible();
-    // M1 has no source registry yet, so the generated list says so (unit tests cover a full registry).
-    await expect(page.getByText('No sources are switched on yet.')).toBeVisible();
+    // Generated at build time from config/sources.json: approved, enabled sources only (D35: Frankfurter).
+    const sources = page.locator('ul.sources');
+    await expect(sources.getByText('Rates: European Central Bank, via Frankfurter. For information only.')).toBeVisible();
+    await expect(sources).not.toContainText('ExchangeRate-API');
     await expect(page.getByRole('link', { name: 'Privacy' }).first()).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Contact' })).toBeVisible();
   });

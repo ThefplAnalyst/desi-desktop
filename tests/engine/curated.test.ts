@@ -4,7 +4,9 @@ import { loadConfig } from '../../engine/registry.ts';
 import { runEngine } from '../../engine/run.ts';
 import { NOW, deps } from './helpers.ts';
 
-const cfg = loadConfig('.');
+const real = loadConfig('.');
+// Curated content only: network sources the owner has approved are switched off for this test.
+const cfg = { ...real, registry: real.registry.map((s) => (s.adapter === 'curated' ? s : { ...s, enabled: false })) };
 const festivals = cfg.registry.find((s) => s.id === 'festivals');
 
 describe('ENG-04 D25 curated adapter', () => {
